@@ -23,18 +23,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 
-	jsp 파일 호출 방법
-	localhost : 포트 / path /  파일이름
-	* 웰컴페이지 확인하기!
- -->
- 
- <!-- 
-	서블릿파일 호출방법
-		localhost : 포트 / path / 매핑주소
-	@WebServlet("/매핑주소")
-	@WebServlet("/hello1")
-  -->
 
 <!-- java 코드를 사용하는 방법 -->
 <!-- %! : 선언문 -->
