@@ -30,11 +30,11 @@
 		request.setAttribute("request_str", "request_str");
 		request.setAttribute("request_person", new Person("momo", 30));
 		
-		// 쿼리스트링을 통한 파마이터 전달
-		response.sendRedirect("requestRedirect.jsp?isRedirect=1");
-		
 		// session영역에 값을 저장
 		session.setAttribute("session_str", "session_str");
+		
+		// 쿼리스트링을 통한 파마이터 전달
+		response.sendRedirect("requestRedirect.jsp?isRedirect=1");
 		
 	%>
 	
