@@ -43,7 +43,7 @@ public class CookieManamer {
 		return value;
 	}
 	
-	
+	// 쿠키 삭제하기
 	public static void deleteCookie(HttpServletResponse response, String name) {
 		makeCookie(response, name, "", 0);
 	}
