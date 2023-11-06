@@ -1,4 +1,5 @@
-<%@page import="com.momo.utils.CookieManamer"%>
+
+<%@page import="com.momo.utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
 					//alert('버튼이 클릭되었습니다.');
 					console.log('체크박스가 선택 되었습니다.')
 					
-					// 서버에 요청 방법
+					// 서버에 연결 요청 방법(전송)
 					// 1. herf : queryStringd을 이용해서 파라미터를 전달
 					// 2. form submit : form안에 요소들을 가지고 이동
 					popupForm.submit();
@@ -56,6 +57,13 @@
 				console.log('체크박스가 선택되지 않았습니다.')
 				// display 속성을 none로 설정하면 화면에서 숨김처리
 				popup.style.display = 'none';
+				// display 속성을 block으로 설정하면 화면에서 출력
+				/*
+					querySelector : 요소 하나만 선택
+					querySelectorAll : 여러개의요소 선택, nodeList를 반환, [0]로 접근가능
+				*/
+				
+				document.querySelector("#popup").style.display="block";
 			}
 		}
 		
@@ -71,7 +79,7 @@
 
 	<form action="cookiePopupAction.jsp" name="popupForm">
 		<%
-			String popupClose = CookieManamer.readCookie(request, "popupClose");
+			String popupClose = CookieManager.readCookie(request, "popupClose");
 			// 쿠키에 저장된 popupClose의 	
 			if(!"Y".equals(popupClose)){
 		%>

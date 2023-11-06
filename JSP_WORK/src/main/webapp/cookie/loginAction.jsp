@@ -1,5 +1,4 @@
-<%@page import="com.momo.utils.CookieManamer"%>
-<%@page import="java.net.CookieManager"%>
+<%@page import="com.momo.utils.CookieManager"%>
 <%@page import="javax.swing.RepaintManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,7 +23,7 @@
 		// save_check값이 null이 아니라면
 		if(save_check != null){
 			// 쿠키에 아이디를 저장
-			CookieManamer.makeCookie(response, "user_id", id, 3600);
+			CookieManager.makeCookie(response, "user_id", id, 3600);
 			
 			/*
 			Cookie cookie = new Cookie("user_id", id);

@@ -4,10 +4,10 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class CookieManamer {
+public class CookieManager {
 
 	// 기보생성자	
-	public CookieManamer() {
+	public CookieManager() {
 		
 	}
 	
@@ -42,12 +42,18 @@ public class CookieManamer {
 		String value = "";	
 		// 요청객체로부터 쿠키배열을 획득
 		Cookie[] cookies = request.getCookies();
-			
-		// 쿠키배열을 돌면서 쿠킹름이 일치하는 객체가 있는지 확인
-		for(Cookie cookie : cookies) {
-			if(cookie.getName().equals(name)) {
-				value = cookie.getValue();
-				break;
+		// 확인용출력
+		System.out.println("cookies : " + cookies);
+		// 브라우저를 통해 처음 접근했을떄
+		// 쿠키가 하나도 저장되어 있지 않은 경우(jsessionid값이 없는경우)
+		// getCookies()를 호출하면 null을 반한
+		if(cookies != null) {
+			// 쿠키배열을 돌면서 쿠킹름이 일치하는 객체가 있는지 확인
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals(name)) {
+					value = cookie.getValue();
+					break;
+				}
 			}
 		}
 		return value;

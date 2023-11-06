@@ -1,4 +1,4 @@
-<%@page import="com.momo.utils.CookieManamer"%>
+<%@page import="com.momo.utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 		// 요청 정보를 쿠키정보를 꺼내서 user_id값을 변수에 저장 
 		// 쿠키는 request
 		
-		user_id = CookieManamer.readCookie(request, "user_id");
+		user_id = CookieManager.readCookie(request, "user_id");
 		checked = !"".equals(user_id) ? "checked" : "";
 		
 		/*

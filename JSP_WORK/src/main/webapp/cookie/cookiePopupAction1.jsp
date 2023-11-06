@@ -1,4 +1,4 @@
-<%@page import="com.momo.utils.CookieManamer"%>
+<%@page import="com.momo.utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 		// 값이 없는데 .을 찍으면 넢포인트입셉션이 나옴
 		if("y".equals(request.getParameter("inactiveToday"))){
 			// 팝업닫기용(popupClose, Y) 쿠키 생성
-			CookieManamer.makeCookie(response, "popupClose", "Y", 3600);
+			CookieManager.makeCookie(response, "popupClose", "Y", 3600);
 			
 			// 끝나면 cookiePopupMain 페이지로 이동(페이지전환)
 			response.sendRedirect("cookiePopupMain1.jsp");	
