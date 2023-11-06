@@ -1,4 +1,4 @@
-<%@page import="com.momo.utils.CookieManamer"%>
+<%@page import="com.momo.utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,8 +23,8 @@
 <body>
 	<h2>쿠키를 이용한 팝업창 제어 ver 2.0</h2>
 	<%
-		String popupClose = CookieManamer.readCookie(request, "popupClose");
-		String off = popupClose.equals("Y") ? "off" : "";
+	String popupClose = CookieManager.readCookie(request, "popupClose");
+			String off = popupClose.equals("Y") ? "off" : "";
 	%>
 	<!-- 쿠키를 생성하는 페이지 요청 -->
 	<form action="cookiePopupAction1.jsp" name="popupForm">

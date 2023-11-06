@@ -1,4 +1,4 @@
-<%@page import="com.momo.utils.CookieManamer"%>
+<%@page import="com.momo.utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,31 +9,30 @@
 </head>
 <body>
 	<%
-		String user_id = "momo"; 
-		String checked = "";
-		// user_id 쿠키 찾기
-		// 요청 정보를 쿠키정보를 꺼내서 user_id값을 변수에 저장 
-		// 쿠키는 request
-		
-		user_id = CookieManamer.readCookie(request, "user_id");
-		checked = !"".equals(user_id) ? "checked" : "";
-		
-		/*
-		Cookie[] cookies = request.getCookies();
-		
-		if(cookies != null){
-			for(Cookie cookie : cookies){
-				if("user_id".equals(cookie.getName())){
-					out.print("user_id를 찾았어요");
-					user_id = cookie.getValue();
-					checked = "checked";
-					break;
-				}
-			}	
-		}
-		*/
-		out.print("<br>checked 값 : " + checked);
-	
+	String user_id = "momo"; 
+			String checked = "";
+			// user_id 쿠키 찾기
+			// 요청 정보를 쿠키정보를 꺼내서 user_id값을 변수에 저장 
+			// 쿠키는 request
+			
+			user_id = CookieManager.readCookie(request, "user_id");
+			checked = !"".equals(user_id) ? "checked" : "";
+			
+			/*
+			Cookie[] cookies = request.getCookies();
+			
+			if(cookies != null){
+		for(Cookie cookie : cookies){
+			if("user_id".equals(cookie.getName())){
+				out.print("user_id를 찾았어요");
+				user_id = cookie.getValue();
+				checked = "checked";
+				break;
+			}
+		}	
+			}
+			*/
+			out.print("<br>checked 값 : " + checked);
 	%>
 	<form action="loginAction.jsp" method="post">
 		<div class='loginbox'>

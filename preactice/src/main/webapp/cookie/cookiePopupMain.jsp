@@ -1,4 +1,4 @@
-<%@page import="com.momo.utils.CookieManamer"%>
+<%@page import="com.momo.utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,15 +29,11 @@
 			
 			// 팝업클로즈 쿠키의 값이 'Y'이면, 팝업창을 화면에서 숨김처리
 
-			<%
-				//String popupClose = CookieManamer.readCookie(request, "popupClose");
-				//if("Y".equals(popupClose)){
-			%>
+			<%//String popupClose = CookieManamer.readCookie(request, "popupClose");
+				//if("Y".equals(popupClose)){%>
 				//// 요소를 선택후 화면에서 숨김처리
 				//document.querySelector('#popup').style.display = 'none';
-			<%
-				//}
-			%>
+			<%//}%>
 				
 			// 버튼 이벤트 추가
 			closeBtn.onclick = function(){
@@ -71,7 +67,7 @@
 
 	<form action="cookiePopupAction.jsp" name="popupForm">
 		<%
-			String popupClose = CookieManamer.readCookie(request, "popupClose");
+		String popupClose = CookieManager.readCookie(request, "popupClose");
 			// 쿠키에 저장된 popupClose의 	
 			if(!"Y".equals(popupClose)){
 		%>

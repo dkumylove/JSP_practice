@@ -4,10 +4,10 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class CookieManamer {
+public class CookieManager {
 
 	// 기보생성자	
-	public CookieManamer() {
+	public CookieManager() {
 		
 	}
 	
