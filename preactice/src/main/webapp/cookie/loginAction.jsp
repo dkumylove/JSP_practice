@@ -1,5 +1,4 @@
 <%@page import="com.momo.utils.CookieManager"%>
-<%@page import="java.net.CookieManager"%>
 <%@page import="javax.swing.RepaintManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
