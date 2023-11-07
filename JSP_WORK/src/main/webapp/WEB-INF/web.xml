@@ -9,22 +9,44 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>HelloController</display-name>
-    <servlet-name>HelloController</servlet-name>
-    <servlet-class>com.momo.controller.HelloController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HelloController</servlet-name>
-    <url-pattern>/HelloController</url-pattern>
-  </servlet-mapping>
+  
+  <!-- 컨텍스트 초기화 매개변수 -->
   <context-param>
     <param-name>INIT_PARAM</param-name>
     <param-value>web.xml에 저장한 초기화 변수</param-value>
   </context-param>
+  
+  <!-- 데이터베이스 접속 정보 -->
+  <context-param>
+    <param-name>driver</param-name>
+    <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:oracle:thin:@localhost:1521:myoracle</param-value>
+  </context-param>
+  <context-param>
+    <param-name>id</param-name>
+    <param-value>test</param-value>
+  </context-param>
+  <context-param>
+    <param-name>pw</param-name>
+    <param-value>1234</param-value>
+  </context-param>
+  
+  <!-- 에러 페이지 -->
   <error-page>
     <error-code>404</error-code>
     <location>/Exception.jsp</location>
   </error-page>
+  <servlet>
+    <description></description>
+    <display-name>JobListController</display-name>
+    <servlet-name>JobListController</servlet-name>
+    <servlet-class>com.momo.controller.JobListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JobListController</servlet-name>
+    <url-pattern>/JobListController</url-pattern>
+  </servlet-mapping>
 </web-app>

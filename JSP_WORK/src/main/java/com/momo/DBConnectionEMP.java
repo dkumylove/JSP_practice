@@ -33,16 +33,21 @@ public class DBConnectionEMP {
 			System.out.println("오라클드라이버 확인");
 			// 2. 커넥션 생성
 			con = DriverManager.getConnection(url, id, pw);
+			
+			int empId = 0;
+			
 			// 3. 쿼리 문장 준비
-			String sql = "select emp_id, emp_name, emp_no from employee";
+			String sql = "select emp_id, emp_name, emp_no from employee where emp_id >" + empId;
 			
 			// 4. 쿼리 문장 실행
+			// 꺼내올때 sql문 입력안함/ 
 			stmt = con.createStatement();
 			
 			// stmt.executeQuery(sql);
 			// 	select 문장을 실행 할 경우 ResultSet을 반환
 			// stmt.executeUpdate(sql);
 			// update, insert, delete 의 경우 int타입을 반환 한다.
+			//        -> 실행결과 몇건이 처리되었는지
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {

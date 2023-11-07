@@ -6,36 +6,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import com.momo.dao.DeptDao;
+import com.momo.dto.DeptDto;
 
 /**
- * Servlet implementation class HelloController
- * 
- * 사용자가 /hellocontroller 경로를 요청하면
- * 요청 URL에 매핑된 서블릿이 실행
- * 
- * 요청 전달된 메서드에 의해 실행될 메서드가 결정된다.
- * - 사용자가 지정하지 않은 경우 get방식
- * - 링크를 클릭했을떄 주소창에 직접 입력했을떄
- * 
- * get방식 요청에 대해서는 doget메서드가 실행되고
- * post방식 요청에 대해서는 dopost메서드가 실행된다.
- * 해당 요청방식이 구현되지 않은 경우 오류발생한다.
- * 
- * 서블릿파일 호출방법
- * localhost : 포트 / path / 매핑주소
- * @WebServlet("/매핑주소")
- * @WebServlet("/h")
- * 
- * 서블릿이 아닌 java파일을 실행할 경우, 404 오류 발생할수 있다.
+ * Servlet implementation class DeptListConnection
  */
-@WebServlet("/h")
-public class HelloController extends HttpServlet {
+@WebServlet("/deptList")
+public class DeptListConnection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HelloController() {
+    public DeptListConnection() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,7 +32,15 @@ public class HelloController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		// DB에 접근해서 리스트를 조회
+		DeptDao dao = new DeptDao(request.getServletContext());
+		List<DeptDto> list = dao.getList();
+		
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("deptList.jsp").forward(request, response);
+				
 	}
 
 	/**

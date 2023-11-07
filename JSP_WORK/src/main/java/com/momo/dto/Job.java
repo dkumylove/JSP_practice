@@ -4,8 +4,6 @@ public class Job {
 	private String jobCode;
 	private String jobName;
 	
-	
-	
 	@Override
 	public String toString() {
 		return jobCode + "/" + jobName;

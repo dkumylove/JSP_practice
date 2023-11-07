@@ -14,12 +14,12 @@
 		popupCookie
 		
 	// 체크박스의 값을 수집
-	String inactiveToday = request.getParameter("inactiveToday");
+	//String inactiveToday = request.getParameter("inactiveToday");
 	// inactiveToday값을 출력하기
-	out.print("inactiveToday : " + inactiveToday);
+	//out.print("inactiveToday : " + inactiveToday);
 	
 	// inactiveToday이 checked이면 쿠키 저장
-	if(inactiveToday){
+	//if(inactiveToday){
 	// 쿠키에 값저장
 			
 	}
