@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.momo.common.DBConnPool;
 import com.momo.common.DBConnection;
 import com.momo.dto.EmpDto;
 
@@ -17,12 +18,17 @@ import jakarta.servlet.ServletContext;
  * Dao -> mapper
  */
 
-public class EmpDao extends DBConnection{
+public class EmpDao extends DBConnPool{
 	
-	public EmpDao(ServletContext application) {
-		super(application);
-	}
-	
+	/**
+	 * 생서아를 이용하여 Connection 객체를 생성후
+	 * 맴버변수인 con에 저장
+	 * @param application
+	 */
+//	public EmpDao(ServletContext application) {
+//		super(application);
+//	}
+//  주석처리하면 기본생성자 호출됨	
 	/**
 	 * 데이테베이스로부터 사원의 목록을 조회하여 반환
 	 * 조회된 데이터를 반환(화면에 출력)하기 위해 리스트에 담아준다.
@@ -49,6 +55,9 @@ public class EmpDao extends DBConnection{
 				
 				list.add(dto);
 			}
+			// 자원반납
+			close();
+			
 		} catch (SQLException e) {
 			// 객체생성 실패시
 			System.out.println("SQLException 예외상황 발생");

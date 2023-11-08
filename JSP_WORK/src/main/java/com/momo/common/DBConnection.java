@@ -11,6 +11,7 @@ import jakarta.servlet.ServletContext;
 
 public class DBConnection {
 	
+	// con이 null인경우 예외발생 가능 : DB Connection 생성한 것을 변수에 저장하지 않았기 떄문
 	public Connection con;
 	public Statement stmt;
 	public PreparedStatement pstmt;
@@ -30,6 +31,7 @@ public class DBConnection {
 			String pw = "1234";
 			
 			// 2. DB Connection 생성
+			// 꼭 변수에 저장해야함. 저장하지 않으면 con이 null이 되면서 예외발생
 			con = DriverManager.getConnection(url, id, pw);
 		
 			System.out.println("DB 연결 성공(기본생성자)");

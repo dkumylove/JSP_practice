@@ -6,9 +6,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
- * Servlet implementation class HelloController
+ * URL매핑 ("/deptList" 페이지를 요청하면 실행)]
+ * 요청메서드에 따라서 실행되는 메서드가 결정
+ *
+ * 주소표시줄, 링크 -> get방식 -> doget() 메서드 호출
+ * Connection 
+ * 	- 사용자의 요청정보를 수집
+ * 	- 비지니스 로직 호출(서비스로 만들어지는 객체)
+ * 	- View로 페이지 전환( 컨트롤러에서 페이지 생성하지 않음. 번거로움)
+ * -------------------------------------------------
  * 
  * 사용자가 /hellocontroller 경로를 요청하면
  * 요청 URL에 매핑된 서블릿이 실행
@@ -27,6 +36,8 @@ import java.io.IOException;
  * @WebServlet("/h")
  * 
  * 서블릿이 아닌 java파일을 실행할 경우, 404 오류 발생할수 있다.
+ * 
+ * 
  */
 @WebServlet("/h")
 public class HelloController extends HttpServlet {
@@ -45,7 +56,16 @@ public class HelloController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		out.append("<h2>out 객체를 이용한 출력</h2>");
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+	
 	}
 
 	/**
