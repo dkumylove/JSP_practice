@@ -12,6 +12,7 @@
 	<!-- 
 		loginProcess 또는 ./loginProcess
 		: 현재 페이지의 위치를 기준으로 경로를 호출
+		: 실행 파일 기준
 		/J/06session/ex/loginForm
 		
 		/loginProcess
@@ -20,6 +21,7 @@
 		
 		../loginProcess
 		: 상위 경로로 이동/ 한단계위라서 빠져나가서 중간하나의 경로 필요없음
+		:../../ 상위의 상위 경로
 		06session/loginForm
 	 -->
 	

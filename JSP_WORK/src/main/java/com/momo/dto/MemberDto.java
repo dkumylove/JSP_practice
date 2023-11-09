@@ -32,6 +32,5 @@ public class MemberDto {
 	public void setRegidate(String regidate) {
 		this.regidate = regidate;
 	}
-	
-	
+
 }

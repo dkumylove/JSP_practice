@@ -7,7 +7,7 @@ import com.momo.dto.MemberDto;
 
 public class MemberDao extends DBConnPool{
 	
-	public MemberDto login(String id, String pass) {
+	public MemberDto login(String id, String pw) {
 		MemberDto memberDto = new MemberDto();
 		
 		String sql ="select *\r\n"
@@ -20,7 +20,7 @@ public class MemberDao extends DBConnPool{
 			
 			// ? 를 값으로 변환, 파라미터 세팅
 			pstmt.setString(1, id);
-			pstmt.setString(2, pass);
+			pstmt.setString(2, pw);
 			
 			// 쿼리 실행
 			rs = pstmt.executeQuery();

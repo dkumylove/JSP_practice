@@ -14,7 +14,7 @@ import com.momo.dao.MemberDao;
 import com.momo.dto.MemberDto;
 
 @WebServlet("/06session/ex/loginProcess")
-public class loginProcessController extends HttpServlet {
+public class LoginProcessController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

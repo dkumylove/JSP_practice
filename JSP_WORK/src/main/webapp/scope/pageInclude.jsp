@@ -23,7 +23,5 @@
 		<li>person : <%= pageContext.getAttribute("pagePerson") %></li>
 	</ul>
 	
-	
-
 </body>
 </html>
