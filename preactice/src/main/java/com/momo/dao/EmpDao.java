@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.momo.common.DBConnPool;
 import com.momo.common.DBConnection;
 import com.momo.dto.EmpDto;
 
@@ -11,11 +12,11 @@ import jakarta.servlet.ServletContext;
 
 
 
-public class EmpDao extends DBConnection{
+public class EmpDao extends DBConnPool{
 	
-	public EmpDao(ServletContext application) {
-		super(application);
-	}
+//	public EmpDao(ServletContext application) {
+//		super(application);
+//	}
 	
 
 	// Emp 테이블이 가지고있는 데이터를 조회해서 List를 만듬
@@ -39,6 +40,11 @@ public class EmpDao extends DBConnection{
 				
 				list.add(dto);
 			}
+			System.out.println("list 완성");
+			
+			// 자원반납
+			close();
+			
 		} catch (SQLException e) {
 			// 객체생성 실패시
 			System.out.println("SQLException 예외상황 발생");

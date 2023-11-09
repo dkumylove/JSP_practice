@@ -36,8 +36,13 @@ public class DeptDao extends DBConnection{
 				dto.setNational_code(rs.getString("national_code"));
 				
 				list.add(dto);
+				
 			}
+			System.out.println("list 완성");
 			
+			// 자원반납
+			close();
+
 		} catch (SQLException e) {
 			System.out.println("SQLException 예외상황 발생");
 			e.printStackTrace();
