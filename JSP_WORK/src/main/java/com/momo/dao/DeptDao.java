@@ -42,6 +42,8 @@ public class DeptDao extends DBConnection{
 				
 				list.add(dto);
 			}
+			// 자원반납
+			close();
 			
 		} catch (SQLException e) {
 			System.out.println("SQLException 예외상황 발생");

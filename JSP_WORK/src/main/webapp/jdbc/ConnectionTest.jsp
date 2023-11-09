@@ -70,7 +70,7 @@
 	<h2>empDao.getList()</h2>
 	<% 
 		
-		EmpDao empDao = new EmpDao(application);
+		EmpDao empDao = new EmpDao();
 		List<EmpDto> list = empDao.getList();
 		
 		//out.print(list);

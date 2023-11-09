@@ -39,7 +39,7 @@ public class MemberDao extends DBConnPool{
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("SQLException 예외상황 발생");
 			e.printStackTrace();
 			return null;
 		}
