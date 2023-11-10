@@ -52,14 +52,16 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("user_id", id);
 			System.out.println("로그인 성공");
 			
-			// 게시글 조회후 request에 담아줌
-			BoardDao boardDao = new BoardDao();
-			request.setAttribute("list", boardDao.getList());
+//			// 게시글 조회후 request에 담아줌
+//			BoardDao boardDao = new BoardDao();
+// 			request.setAttribute("list", boardDao.getList());
 			
 			// 페이지 이동
 			// sendRedirect를 이용할 경우, requst 영역을 공유하지 않기 떄문에 list값이 화면으로 전달 할수 없음
 			//response.sendRedirect("board.jsp");
-			request.getRequestDispatcher("board.jsp").forward(request, response);
+			//request.getRequestDispatcher("board.jsp").forward(request, response);
+			// BoardListController페이지로 이동 요청
+			response.sendRedirect("/boardList");
 			
 		} else {
 			// 로그인 실패
@@ -73,4 +75,3 @@ public class LoginController extends HttpServlet {
 	}
 
 }
-

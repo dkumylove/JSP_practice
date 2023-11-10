@@ -9,17 +9,24 @@
 </head>
 <body>
 	
+	
 	<%-- 객체생성 --%>
+	<%
+		BoardDto boardDto1 = new BoardDto();
+		boardDto1.setContent("내용");
+		boardDto1.setTitle("제목");
+		
+		request.setAttribute("boardDto1", boardDto1);
+		
+		// 위아래 내용은 같은 내용
+	%>
+	
 	<jsp:useBean id="boardDto"
 				class="com.momo.dto.BoardDto"
 				scope="request"></jsp:useBean>
 	
 	<%-- setProperty매서드를 이용해서 속성값을 지정 --%>
-		<%-- 
-			name : 자비빈즈 이름
-			property : 필드명
-			value : 필드값
-		 --%>
+
 	<jsp:setProperty property="content" name="boardDto" value="내용"/>
 	<jsp:setProperty property="title" name="boardDto" value="제목"/>
 	

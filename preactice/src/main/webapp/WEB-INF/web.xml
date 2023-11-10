@@ -9,14 +9,10 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  
-  
   <context-param>
     <param-name>INIT_PARAM</param-name>
     <param-value>web.xml에 저장한 초기화 변수</param-value>
   </context-param>
-  
-  
   <context-param>
     <param-name>driver</param-name>
     <param-value>oracle.jdbc.driver.OracleDriver</param-value>
@@ -33,25 +29,59 @@
     <param-name>pw</param-name>
     <param-value>1234</param-value>
   </context-param>
-  
-  
   <resource-ref>
     <description>Oracle Datasource example</description>
     <res-ref-name>jdbc/myoracle</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
-  
-  
   <error-page>
     <error-code>404</error-code>
     <location>/Exception.jsp</location>
   </error-page>
-  
-  
   <session-config>
     <session-timeout>20</session-timeout>
   </session-config>
-  
-  
+  <filter>
+    <filter-name>SessionInitializer</filter-name>
+    <filter-class>org.apache.catalina.filters.SessionInitializerFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SessionInitializer</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardDetailController</display-name>
+    <servlet-name>BoardDetailController</servlet-name>
+    <servlet-class>com.momo.controller.BoardDetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardDetailController</servlet-name>
+    <url-pattern>/BoardDetailController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardListController</display-name>
+    <servlet-name>BoardListController</servlet-name>
+    <servlet-class>com.momo.controller.BoardListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardListController</servlet-name>
+    <url-pattern>/BoardListController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardWriterController</display-name>
+    <servlet-name>BoardWriterController</servlet-name>
+    <servlet-class>com.momo.controller.BoardWriterController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardWriterController</servlet-name>
+    <url-pattern>/BoardWriterController</url-pattern>
+  </servlet-mapping>
 </web-app>
