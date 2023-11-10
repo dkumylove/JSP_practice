@@ -25,8 +25,8 @@
 			- getter 와 setter는 접근자가 public으로 선언되어야 한다.
 	
 		<jsp:useBean> : 자비빈 생성
-		<jsp:setProperty> : 자비빈 속성을 저장
-		<jsp:getProperty> :W 자비빈 속성을 추출
+			<jsp:setProperty> : 자비빈 속성을 저장
+			<jsp:getProperty> : 자비빈 속성을 추출
 	 --%>
 	 
 	 <%-- 
@@ -36,6 +36,16 @@
 	  --%>
 	
 	<%-- 객체생성 --%>
+	<%
+		BoardDto boardDto1 = new BoardDto();
+		boardDto1.setContent("내용");
+		boardDto1.setTitle("제목");
+		
+		request.setAttribute("boardDto1", boardDto1);
+		
+		// 위아래 내용은 같은 내용
+	%>
+	
 	<jsp:useBean id="boardDto"
 				class="com.momo.dto.BoardDto"
 				scope="request"></jsp:useBean>

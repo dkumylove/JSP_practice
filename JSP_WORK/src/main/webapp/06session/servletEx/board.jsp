@@ -21,11 +21,12 @@
 	 	methob : 요청방식 (get : 조회용 파라미터/ post : 등록, 수정용 파라미터)
 	 	* 버튼생성했더라도 form안에 버튼이 하나밖에 없다면 해당 버튼은 서브밋 버튼이 된다.
 	  -->
-	
+	<%--= request.getAttribute("list") --%>
 	<script type="text/javascript">
 	// 화면에서 동적처리
 	// 화면을 처리하고 실행하기위해
 	window.onload = function(){
+		
 		console.log('onload event ====');
 		let logoutBtn = document.querySelector("#logoutBtn");
 		let loginBtn = document.querySelector("#loginBtn");
@@ -40,7 +41,13 @@
 			// 로그인페이지로 이동
 			loginBtn.addEventListener('click', function(){
 				//alert('test');
-				loginForm.action = "loginForm.jsp";
+				// 같은 경로에 있는 파일을 호출할때는 오류가 발생하지 않는다.
+				// 하지만 루트경로가 바뀌면 오류발생
+				// 본인 위치기준으로 본인 부분만 바뀌기 떄문에 경로를 찾지 못함.
+				//loginForm.action = "loginForm.jsp";
+				// 실제경로를 가지고 움직이기 떄문에 오류발생이 낮음
+				// 여러곳에서 사용하는 경우, 경로 전체를 입력해줘야함.
+				loginForm.action = "/06session/servletEx/loginForm.jsp";
 				loginForm.submit();
 			});
 		}
@@ -93,7 +100,7 @@
 		
 		<tr>
 			<td><%= dto.getNum()%></td>
-			<td><%= dto.getTitle()%></td>
+			<td><a href="/boardRead?num=<%=dto.getNum()%>"><%= dto.getTitle()%></a></td>
 			<td><%= dto.getContent()%></td>
 			<td><%= dto.getId()%></td>
 			<td><%= dto.getPostdate()%></td>

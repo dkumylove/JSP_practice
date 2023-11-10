@@ -39,7 +39,7 @@ public class MemberDao extends DBConnPool{
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("SQLException 예외상황 발생");
+			System.out.println("MemberDao.login()===SQLException 예외상황 발생");
 			e.printStackTrace();
 			return null;
 		}
