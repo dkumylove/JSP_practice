@@ -24,6 +24,7 @@ public class DBConnection {
 		try {
 			// 1. 드라이버로딩
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("드라이버 확인");
 			
 			// 2. DB연결에 필요 정보
 			String url = "jdbc:oracle:thin:@localhost:1521:myoracle";

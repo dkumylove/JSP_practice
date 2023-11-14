@@ -54,34 +54,5 @@
     <filter-name>SessionInitializer</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <servlet>
-    <description></description>
-    <display-name>BoardDetailController</display-name>
-    <servlet-name>BoardDetailController</servlet-name>
-    <servlet-class>com.momo.controller.BoardDetailController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>BoardDetailController</servlet-name>
-    <url-pattern>/BoardDetailController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>BoardListController</display-name>
-    <servlet-name>BoardListController</servlet-name>
-    <servlet-class>com.momo.controller.BoardListController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>BoardListController</servlet-name>
-    <url-pattern>/BoardListController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>BoardWriterController</display-name>
-    <servlet-name>BoardWriterController</servlet-name>
-    <servlet-class>com.momo.controller.BoardWriterController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>BoardWriterController</servlet-name>
-    <url-pattern>/BoardWriterController</url-pattern>
-  </servlet-mapping>
+  
 </web-app>

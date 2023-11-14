@@ -35,7 +35,7 @@ public class BoardDao extends DBConnPool  {
 			}
 		
 		} catch (SQLException e) {
-			System.out.println("BoardDao2.getOne()===SQLException 예외 발생");
+			System.out.println("BoardDao.getOne()===SQLException 예외 발생");
 			e.printStackTrace();
 		}
 		// 값출력

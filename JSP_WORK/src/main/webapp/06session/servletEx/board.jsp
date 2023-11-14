@@ -18,7 +18,7 @@
 	 <!-- 
 	 	submit : form의 요소들을 파라미터로 가지고 서버에 요청
 	 	action : 서버에 요청할 url 주소
-	 	methob : 요청방식 (get : 조회용 파라미터/ post : 등록, 수정용 파라미터)
+	 	method : 요청방식 (get : 조회용 파라미터/ post : 등록, 수정용 파라미터)
 	 	* 버튼생성했더라도 form안에 버튼이 하나밖에 없다면 해당 버튼은 서브밋 버튼이 된다.
 	  -->
 	<%--= request.getAttribute("list") --%>
