@@ -43,4 +43,14 @@
     <filter-name>SessionInitializer</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardDeleteController</display-name>
+    <servlet-name>BoardDeleteController</servlet-name>
+    <servlet-class>com.login.controller.BoardDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardDeleteController</servlet-name>
+    <url-pattern>/BoardDeleteController</url-pattern>
+  </servlet-mapping>
 </web-app>

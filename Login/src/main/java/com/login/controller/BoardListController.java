@@ -24,8 +24,25 @@ public class BoardListController extends HttpServlet {
 		// 리스트 조회후 리퀘스트 영역에 저장
 		BoardDao dao = new BoardDao();
 		
+		// 페이징을 위한 시작번호, 끝번호 전에 세팅
+		int pageNo = 1;
+		int amount = 10;
+		// 전달된 값이 잆으면 변경없이 기본값
+		if(request.getParameter("pageNo") != null && !"".equals(request.getParameter("pageNo"))){
+			pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		}
+		if(request.getParameter("amount") != null && !"".equals(request.getParameter("amount"))){
+			amount = Integer.parseInt(request.getParameter("amount"));
+		}
+		System.out.println("pageNo : " + pageNo);
+		System.out.println("amount : " + amount);
+		
+		// 페이징을 위한 시작번호, 끝번호
+		int endNum = pageNo * amount;
+		int startNum = endNum - (amount - 1);
+		
 		// request영역에 저장 -> 화면까지 데이터를 유지하기 위해서
-		request.setAttribute("list", dao.getList());
+		request.setAttribute("list", dao.getList(startNum, endNum));
 		
 		// 자원반납
 		dao.close();
