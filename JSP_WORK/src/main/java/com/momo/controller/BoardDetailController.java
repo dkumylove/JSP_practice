@@ -30,6 +30,7 @@ public class BoardDetailController extends HttpServlet {
 		// 상세보기조회 조회
 		BoardDto dto = dao.getOne(num);	
 		request.setAttribute("dto", dto);
+		request.setAttribute("id", dto.getId());
 		
 		// 자원반납
 		dao.close();
