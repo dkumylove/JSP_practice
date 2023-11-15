@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.momo.dao.BoardDao;
+import com.momo.dto.Criteria;
 
 @WebServlet("/boardList")
 public class BoardListController extends HttpServlet {
@@ -16,9 +17,19 @@ public class BoardListController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 리스트를 조회하기 위한 파라미터 수집
+		Criteria cri = new Criteria(request.getParameter("pageNo"), request.getParameter("amount"));
+		
+		
 		// 리스트 조회후 리퀘스트 영역에 저장
 		BoardDao dao = new BoardDao();
-		request.setAttribute("list", dao.getList());
+		
+		// request영역에 저장 -> 화면까지 데이터를 유지하기 위해서
+		request.setAttribute("list", dao.getList(cri));
+		
+		// 페이지 블럭의 생성하기 위해 필요한 정보를 저장
+		request.setAttribute("cri", cri);
+		request.setAttribute("totalCnt", dao.getTotalCnt());
 		
 		// 자원반납
 		dao.close();
