@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.momo.common.DBConnPool;
 import com.momo.dto.BoardDto;
-import com.momo.dto.Criteria;
 
 // DBConnPool : 톰켓에서 제공해주는 기능을 사용하여 커넥션풀이라는 공간에 커넥션 객체를 미리 생성 해 놓고 사용하는 객체
 // main 메소드 사용이 불가능, 서버기 실행되야 사용이 가능
@@ -104,35 +103,16 @@ public class BoardDao extends DBConnPool{
 	
 	/**
 	 * 게시글 목록을 반환
-	 * + 페이징 처리
-	 * @param endNum 
-	 * @param startNum 
-	 * @return List<BoardDto>
+	 * @return 
 	 */
-	public List<BoardDto> getList(Criteria cri) {
+	public List<BoardDto> getList() {
 		
 		List<BoardDto> list = new ArrayList<>();
 		
-//		String sql = "select num, title, content, id, "
-//		+ "to_char(postdate, 'yyyy-mm-dd') postdate, visitcount "
-//		+ "from board "
-//		+ "order by num desc";
-
-		String sql = "select *\r\n"
-					+ "from (select rownum rnum, b.*\r\n"
-					+ "      from ( select *\r\n"
-					+ "             from board\r\n"
-					+ "             order by num desc) b )\r\n"
-					+ "where rnum between ? and ?";
+		String sql = "select * from board";
 		
-		//DB로 부터 게시글의 목록을 조회하여 list에 담아 반환한다.
 		try {
-			pstmt = con.prepareStatement(sql);
-			// 시작번호 = 끝번호- ( 페이지당 게시물 수 - 1)
-			pstmt.setInt(1, cri.getStartNum());
-			// 끝번호 = 페이지 번호 * 페이지당 게시물수
-			pstmt.setInt(2, cri.getEndNum());
-			
+			pstmt = con.prepareStatement(sql);			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -155,32 +135,5 @@ public class BoardDao extends DBConnPool{
 		}
 		
 		return list;
-	}
-	
-	/**
-	 * 게시물의 총 건수를 조회후 반환
-	 * - 집게 함수를 이용하여 게시글의 총건수를 구한다.
-	 * @return 게시글의 총 건수
-	 */
-	public int getTotalCnt() {
-		
-		int res = 0;
-		String sql = "select count(*) from board";
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				res = rs.getInt(1);
-			}
-			
-		} catch (SQLException e) {
-			System.out.println("BoardDao.getTotalCnt()===SQLException 예외 발생");
-			e.printStackTrace();
-		}
-		
-		return res;
 	}
 }
