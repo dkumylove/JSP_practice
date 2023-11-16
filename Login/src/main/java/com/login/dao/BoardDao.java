@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.login.common.DBConnPool;
 import com.login.dto.BoardDto;
+import com.login.dto.Criteria;
+
 
 /**
  * DB로부터 게시글을 조회, 입력, 수정, 삭제 처리한다.
@@ -108,7 +110,7 @@ public class BoardDao extends DBConnPool {
 	 * DB로부터 리스트를 조회후 반환
 	 * + 페이징 처리
 	 */
-	public List<BoardDto> getList(int startNum, int endNum) {
+	public List<BoardDto> getList(Criteria cri) {
 		
 		List<BoardDto> list = new ArrayList<>();
 		
@@ -128,9 +130,9 @@ public class BoardDao extends DBConnPool {
 		try {
 			pstmt = con.prepareStatement(sql);
 			// 시작번호 = 끝번호- ( 페이지당 게시물 수 - 1)
-			pstmt.setInt(1, startNum);
+			pstmt.setInt(1, cri.getStartNo());
 			// 끝번호 = 페이지 번호 * 페이지당 게시물수
-			pstmt.setInt(2, endNum);
+			pstmt.setInt(2, cri.getEndNo());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -153,6 +155,33 @@ public class BoardDao extends DBConnPool {
 		}
 		
 		return list;
+	}
+	
+	/**
+	 * 게시물의 총 건수를 조회후 반환
+	 * - 집게 함수를 이용하여 게시글의 총건수를 구한다.
+	 * @return 게시글의 총 건수
+	 */
+	public int getTotalCnt() {
+		
+		int total = 0;
+		String sql = "select count(*) from board";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("BoardDao.getTotalCnt()===SQLException 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return total;
 	}
 
 }

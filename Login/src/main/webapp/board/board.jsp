@@ -33,7 +33,6 @@
 			}
 		}
 	
-	
 	</script>
 	
 	
@@ -44,15 +43,52 @@
 		
 	%>
 			<%= session.getAttribute("user_id") %>님 환영합니다.<br>
-			<button id="logoutBtn">로그아웃</button>
+			<button id="logoutBtn" class="btn btn-dark">로그아웃</button>
 		
 	<%	} else { 
 			// 로그인 하지 않은 사용자 -> 로그인버튼 출력 -> 로그인 페이지로 이동
 	%>
-			<button id="loginBtn">로그인</button>
+			<button id="loginBtn" class="btn btn-dark">로그인</button>
 	<%	}%>
+
 	
 	<h2>게시글 목록 조회</h2>
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">번호</th>
+	      <th scope="col">제목</th>
+	      <th scope="col">내용</th>
+	      <th scope="col">작성자</th>
+	      <th scope="col">작성일</th>
+	      <th scope="col">조회수</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  <!-- 게시글의 수만큼 반복시작 -->
+		<%
+			if(request.getAttribute("list") == null){
+				out.print("<td colspan='6'>게시글이 존재하지 않습니다.</td>");
+			} else {
+				List<BoardDto> list = (List<BoardDto>)request.getAttribute("list");
+				for(BoardDto dto : list){
+		%>
+
+	    <tr>
+	      	<th scope="row"><%= dto.getNum() %></th>
+			<td><a href="/boardView?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a></td>
+			<td><%= dto.getContent() %></td>
+			<td><%= dto.getId() %></td>
+			<td><%= dto.getPostdate() %></td>
+			<td><%= dto.getVisitcount()%></td>
+	    </tr>
+	    	<!-- 반복문 끝 -->
+	    <%		}
+			} %>
+	  </tbody>
+	</table>
+	
+	<%-- 
 	<table border="1">
 		<tr>
 			<th>번호</th>
@@ -80,6 +116,8 @@
 		</tr>
 		<%		}
 			} %>
-	</table>
+	</table> --%>
+	
+	<%@include file="PageNavi.jsp" %>
 </body>
 </html>
