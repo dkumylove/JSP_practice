@@ -11,9 +11,7 @@ public class Criteria {
 	private int startNum;
 	private int endNum;
 	
-	public Criteria() {
-	
-	}
+	public Criteria() {}
 
 	/**
 	 * 생성자를 통해 페이지번호와 페이지당 게시물의 수를 받아와서 
@@ -22,7 +20,8 @@ public class Criteria {
 	 * @param amount
 	 */
 	public Criteria(String pageNo, String amount) {
-
+		
+		// 값이 없으면 기본값출력
 		if(pageNo != null && !"".equals(pageNo)) {
 			this.pageNo = Integer.parseInt(pageNo);
 		}

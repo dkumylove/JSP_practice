@@ -11,7 +11,7 @@
 	<script type="text/javascript">
 		// 화면이 모두 불러 들여져 오면 실행
 		window.onload = function(){
-			alert('test');
+			//alert('test');
 			// 이동하기 버튼을 클릭하면 리스트 페이지로 이동
 			console.log('onload event ====');
 			// 화면에 있는 요소를 선택해서 변수에 저장

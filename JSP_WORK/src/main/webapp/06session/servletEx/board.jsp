@@ -113,7 +113,11 @@
 			} %>
 	</table>
 	
-	<!--
+	<%-- <%= request.getAttribute("pageDto") %> --%>
+	<!-- pageNavi include -->
+	<%@include file="PageNavi.jsp" %>
+	
+<%-- 	<!--
 		페이지네비게이션 작성
 			- 페이지 번호
 			- 페이블럭당 페이지 수 pagePerBlock
@@ -124,7 +128,7 @@
 	 -->
 	 <hr>
 	 <%
-	 	out.print("<br>페이지블럭시작 =======================================================");
+	 	out.print("<br>페이지블럭시작 =====");
 
 		int startNo = 0;
 	 	int endNo = 0;
@@ -159,7 +163,7 @@
 	 	for(int i = startNo; i<= endNo; i++){
 	 		out.print("<a href= '/boardList?pageNo=" + i + "'>" + i + "</a> ");
 	 	}
-	 %>
+	 %> --%>
 	
 </body>
 </html>

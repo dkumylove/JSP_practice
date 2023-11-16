@@ -19,7 +19,7 @@
 			}
 			// 정상적으로 삭제처리가 된 경우
 			// 메시지 처리후 리스트 페이지로 이동 합니다.
-			JSFunction.alertLocation("삭제되었습니다.", "", out);
+			JSFunction.alertLocation("삭제되었습니다.", "/boardList", out);
 			
 		} else {
 			/*
