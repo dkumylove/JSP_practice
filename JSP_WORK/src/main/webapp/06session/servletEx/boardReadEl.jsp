@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	num : <%= request.getParameter("num") %><br>
+	num : ${param.num }<br>
 	<script type="text/javascript">
 		// 화면이 모두 불러 들여져 오면 실행
 		window.onload = function(){
@@ -32,13 +32,13 @@
 				// 하지만 서블릿으로 왔을떄는 경우, 경로문제가 발생할수 있다
 				// 그래서 루트경로부터 풀로 경로를 적어주는 것이 오류가 발생하지 않도록 하는 방법이다.
 				location.href = 
-					'/06session/servletEx/deleteProcess.jsp?num=<%=request.getParameter("num")%>';
+					'/06session/servletEx/deleteProcess.jsp?num=${param.num }';
 			});
 		}
 		
 	</script>
 	
-	<h2>게시글 상세보기</h2>	
+	<h2>게시글 상세보기 El</h2>	
 		<button id="listBtn">리스트로 이동하기</button>
 		<button id="editBtn">수정</button>
 		<button id="deleteBtn">삭제</button>	
@@ -47,11 +47,11 @@
 				BoardDto dto = (BoardDto)request.getAttribute("dto");
 		%>
 		
-		<br>제목 : <%= dto.getTitle() %>
-		<br>내용 : <%= dto.getContent() %>
-		<br>작성자 : <%= dto.getId() %>
-		<br>작성일 : <%= dto.getPostdate() %>
-		<br>조회수 : <%= dto.getVisitcount() %>
+		<br>제목 : ${dto.title}
+		<br>내용 : ${dto.content }
+		<br>작성자 : ${dto.id }
+		<br>작성일 : ${dto.postdate }
+		<br>조회수 : ${dto.visitcount }
 		
 		 <%	}%>
 </body>
