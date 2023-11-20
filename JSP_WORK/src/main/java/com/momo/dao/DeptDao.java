@@ -46,7 +46,7 @@ public class DeptDao extends DBConnection{
 			close();
 			
 		} catch (SQLException e) {
-			System.out.println("SQLException 예외상황 발생");
+			System.out.println("DeptDao.getList()===SQLException 예외상황 발생");
 			e.printStackTrace();
 		}
 		

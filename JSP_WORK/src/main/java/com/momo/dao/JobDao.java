@@ -47,7 +47,7 @@ public class JobDao extends DBConnection{
 				list.add(job);
 			}
 		} catch (SQLException e) {
-			System.out.println("SQLException 예외상황 발생");
+			System.out.println("JobDao.getList()===SQLException 예외상황 발생");
 			e.printStackTrace();
 		}
 		

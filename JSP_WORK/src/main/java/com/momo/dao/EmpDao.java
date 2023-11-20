@@ -60,7 +60,7 @@ public class EmpDao extends DBConnPool{
 			
 		} catch (SQLException e) {
 			// 객체생성 실패시
-			System.out.println("SQLException 예외상황 발생");
+			System.out.println("EmpDao.getList()===SQLException 예외상황 발생");
 			e.printStackTrace();
 		}
 		return list;
