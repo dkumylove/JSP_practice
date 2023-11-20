@@ -39,7 +39,7 @@ public class BoardListController extends HttpServlet {
 		// 자원반납
 		dao.close();
 		
-		// 페이지 전환 forward방식으로 전환하amfh request영역이 공유됨
+		// 페이지 전환 forward방식으로 전환하므로 request영역이 공유됨
 		request.getRequestDispatcher("/06session/servletEx/board.jsp").forward(request, response);
 	}
 
