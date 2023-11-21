@@ -3,6 +3,8 @@ package com.momo.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Vector;
 
 import com.momo.common.DBConnPool;
 import com.momo.dto.BoardDto;
@@ -19,6 +21,66 @@ public class BoardDao extends DBConnPool{
 //	public int insertBoard(BoardDto dto) {
 //	
 //}
+	
+	
+	/**
+	 * 검색 조건에 맞는 게시물 목록을 반환
+	 * @param map
+	 * @return
+	 */
+    public List<BoardDto> selectListPage(Criteria cri) {
+        List<BoardDto> selList = new Vector<BoardDto>();  // 결과(게시물 목록)를 담을 변수
+
+        // 쿼리문작성 
+        // 조건문시작
+        String sql = "select *\r\n"
+        		+ "from (select rownum rnum, b.*\r\n"
+        		+ "      from ( select *\r\n"
+        		+ "			from board";
+        		
+        // 검색 조건 추가 
+        if (map.get("searchWord") != null) {
+        	sql += " where " + cri.get("searchCategory")
+                 + " like '%" + cri.get("searchWord") + "%' ";  
+        }
+        
+        	sql += "            order by num desc) b )\r\n"
+        		+ "     where rnum between ? and ?"; 
+        // 조건문 끝
+
+        try {
+            pstmt = con.prepareStatement(sql);
+            // 시작번호 = 끝번호- ( 페이지당 게시물 수 - 1)
+			pstmt.setInt(1, cri.getStartNum());
+			// 끝번호 = 페이지 번호 * 페이지당 게시물수
+			pstmt.setInt(2, cri.getEndNum());
+            
+            // 쿼리문 실행 
+            rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                // 데이터를 dto에 저장
+                BoardDto dto = new BoardDto();
+				dto.setNum(rs.getString("num"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setId(rs.getString("id"));
+				dto.setPostdate(rs.getString("postdate"));				
+				dto.setVisitcount(rs.getString("visitcount"));
+
+                // 반환할 결과 목록에 추가
+                selList.add(dto);
+            }
+        } 
+        catch (Exception e) {
+            System.out.println("BoardDao.selectListPage()===SQLException 예외 발생");
+            e.printStackTrace();
+        }
+ 
+        return selList;
+    }
+	
+	
 	
 	/**
 	 * 게시글 삭제하기
@@ -85,6 +147,7 @@ public class BoardDao extends DBConnPool{
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				// 데이터를 dto에 저장
 				dto = new BoardDto();
 				dto.setTitle(rs.getString("Title"));
 				dto.setContent(rs.getString("Content"));
@@ -136,6 +199,7 @@ public class BoardDao extends DBConnPool{
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				// 데이터를 dto에 저장
 				BoardDto dto = new BoardDto();
 				dto.setNum(rs.getString("num"));
 				dto.setTitle(rs.getString("title"));

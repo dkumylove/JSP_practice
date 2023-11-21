@@ -63,7 +63,7 @@
 		- 아니면 로그인 링크를 화면에 출력	
 	 -->
 	<form name="loginForm">
-	user_id : ${user_id }
+	user_id : 
 	
 	<c:if test="${empty user_id}">
 		<!-- <a href="loginform.jsp">로그인</a> -->
@@ -75,9 +75,20 @@
 		<!--<a href="logoutProcess">로그아웃</a> -->
 	</c:if>
 	</form>
+	<hr>
 	
 	<h2>게시판</h2>
-	<%=session.getAttribute("user_id") %><br>
+	
+	<form>
+		<select name="searchCategory">
+			<option value="title">제목</option>
+			<option value="id">작성자</option>
+			<option value="content">내용</option>
+		</select>
+		<input type="text" name="searchWord" placeholder="검색어를 입력하세요">
+		<button>검색하기</button>
+	</form>
+
 	<table border="1">
 		<tr>
 			<th>일련변호</th>
