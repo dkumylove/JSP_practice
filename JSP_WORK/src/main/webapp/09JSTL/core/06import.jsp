@@ -24,7 +24,7 @@
 		url의 쿼리스트링으로 전달하기
 		c:param 태그를 이요하기
 	 -->
-	<c:import url="../inc/link.jsp?title2=제목" var="link">
+	<c:import url="../inc/link.jsp" var="link">
 		<c:param name="title">링크페이지에 오신걸 환영합니다.</c:param>
 	</c:import>
 		
@@ -35,7 +35,7 @@
 	<hr>
 	
 	<h2>iframe을 이용한 외부자원 삽입하기</h2>
-	<iframe src="../inc/otherPage.jsp" style="width: 500px; height: 500px"></iframe>
+	<iframe src="../inc/otherPage.jsp" style="width: 500px; height: 500px;"></iframe>
 	<hr>
 	
 	<h2>out태그 - el표현언언를 출력</h2>

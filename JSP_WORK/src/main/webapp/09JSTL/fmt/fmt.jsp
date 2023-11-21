@@ -73,22 +73,26 @@
     <h2>날짜 시간 활용</h2>
     
     <c:set var="today" value="<%= new java.util.Date() %>" />
+    오늘날짜 : ${today }<br>
     
     <h4>날짜 포맷</h4>
     full : <fmt:formatDate value="${ today }" type="date" dateStyle="full"/> <br /> 
     short : <fmt:formatDate value="${ today }" type="date" dateStyle="short"/> <br />
     long : <fmt:formatDate value="${ today }" type="date" dateStyle="long"/> <br />
     default : <fmt:formatDate value="${ today }" type="date" dateStyle="default"/>
+    medium : <fmt:formatDate value="${today }" type="date" dateStyle="medium"/><br>
 
     <h4>시간 포맷</h4> 
     full : <fmt:formatDate value="${ today }" type="time" timeStyle="full"/> <br /> 
     short : <fmt:formatDate value="${ today }" type="time" timeStyle="short"/> <br />
     long : <fmt:formatDate value="${ today }" type="time" timeStyle="long"/> <br />
     default : <fmt:formatDate value="${ today }" type="time" timeStyle="default"/>
+    medium : <fmt:formatDate value="${today }" type="time" timeStyle="medium"/><br>
     
     <h4>날짜/시간 표시</h4>    
     <fmt:formatDate value="${ today }" type="both" dateStyle="full" timeStyle="full"/> 
     <br />
+    <h4>pattern 지정후 출력</h4>
     <fmt:formatDate value="${ today }" type="both" pattern="yyyy-MM-dd hh:mm:ss"/> 
     
     <h4>타임존 설정</h4>

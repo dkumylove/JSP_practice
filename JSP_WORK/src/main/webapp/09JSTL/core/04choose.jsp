@@ -53,13 +53,13 @@
 		console.log(form.eng.value);
 		if(form.eng.value == ''){
 			alert('영어점수를 입력해주세요');
-			form.kor.focus();
+			form.eng.focus();
 			return false;
 		}
 		console.log(form.math.value);
 		if(form.math.value == ''){
 			alert('수학점수를 입력해주세요');
-			form.kor.focus();
+			form.math.focus();
 			return false;
 		}
 		return true;
