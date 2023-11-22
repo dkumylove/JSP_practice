@@ -44,7 +44,7 @@
 	  
 	  	<!-- 앞으로 가기 버튼 시작/ disabled : 비활성화 -->
 	    <li class="page-item <%= pageDto.isPrev() ? "" : "disabled"%>">
-	      <a class="page-link" href="/boardList?pageNo=<%=pageDto.getStartNo()-1 %>">Previous</a>
+	      <a class="page-link" onclick="goPage(<%=pageDto.getStartNo()-1 %>)">Previous</a>
 	    </li>
 	    <!-- 앞으로가기 버튼 끝 -->
 	    
@@ -52,8 +52,13 @@
 	    	for(int i = pageDto.getStartNo(); i <= pageDto.getEndNo(); i++){
 	    %>
 			    <li class="page-item">
+			    	<!-- href ="..." 링크로 이동할경우, 검색어가 유지되지 않음 -->
+			    	<!-- 검색어 유지하기 위해 searchForm을 전송하는 goPage()를 생성 -->
+			    	<!-- 링크를 함수 호출로 변경 onClick 이벤트가 발생하면 gopage() 호출 
+			    			함수의 파리메터로 페이지번호를 넣어 주어야 한다.
+			    	-->
 			    	<a class="page-link <%=	pageDto.getCri().getPageNo() == i ? "active" : ""%>"
-			    			 href="/boardList?pageNo=<%= i%>"><%=i %></a>
+			    			 onclick="goPage(<%=i %>)"><%=i %></a>
 			    </li>
 	    <% 	} %>
 	    
@@ -68,7 +73,7 @@
 	    
 	    <!-- 뒤로가기버튼 시작 -->
 	    <li class="page-item <%= pageDto.isNext() ? "" : "disabled"%>">
-	      <a class="page-link" href="/boardList?pageNo=<%= pageDto.getEndNo()+1%>">Next</a>
+	      <a class="page-link" onclick="goPage(<%= pageDto.getEndNo()+1%>)">Next</a>
 	    </li>
 	    <!-- 뒤로가기버튼 시작 -->
 	  </ul>

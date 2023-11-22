@@ -36,7 +36,7 @@ public class BoardDetailController extends HttpServlet {
 		dao.close();
 		
 		// 페이지 전환
-    	request.getRequestDispatcher("/06session/servletEx/boardRead.jsp").forward(request, response);
+    	request.getRequestDispatcher("/06session/servletEx/boardReadEl.jsp").forward(request, response);
 	}
 
 }
