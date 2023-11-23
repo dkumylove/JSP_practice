@@ -11,7 +11,37 @@
 <!-- 부트스트랩 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
+<style type="text/css">
+	.pointer {
+		cursor : pointer;
+	}
+</style>	
+
+</style>
+<script type="text/javascript">
+	/*
+	 	스크립트에서 함수를 정의 하는 방법
+		function 함수명(파람0, 파람1, ...){	
+		}
+		
+		함수의 호출
+		함수명(파람0, 파람1, ...);	
+	*/
+
+	function msg(str){
+		alert(str);
+	}
+
+	function view(no) {
+		location.href = "/book/view?no=" + no;
+	}
+
+	// 화면 요청
+	// location.href = "/book/view?no=1"; 
+</script>
+
 </head>
+
 <body>
 
 	<!-- header 외부파일 인클루드 -->
@@ -39,11 +69,11 @@
 		</tr>
 		</c:if>
 		<!-- 리스트가 있으면 도서록록 출력/ 데이터가 있는경우, 만약 리스트의 사이즈가 0이 아니라면 목록을 출력-->
-		<c:if test="${not empty list }">
+		<c:if test="${not res }">
 		<c:forEach items="${list }" var="dto">
 		<tr>
 			<th scope="row">${dto.no }</th>
-			<th>${dto.title }</th>
+			<th class = "pointer" onclick="view(${dto.no})">${dto.title }</th>
 			<th>${dto.author }</th>
 			<!-- Y/N -> 대여/대여중 -->
 			<th>${dto.rentynStr }</th>

@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<hr>
-	회사정보, 연결사이트
 	
+	<!-- 메뉴, 로그인정보 -->
+	메뉴를 출력, 로그인정보를 출력
+	<hr>
 </body>
 </html>
