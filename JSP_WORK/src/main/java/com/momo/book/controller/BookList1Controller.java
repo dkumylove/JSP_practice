@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.momo.book.dao.BookDao;
 import com.momo.dto.Criteria;
+import com.momo.dto.PageDto;
 import com.momo.lib.dto.BookDto;
 
 @WebServlet("/book/list")
@@ -33,6 +34,10 @@ public class BookList1Controller extends HttpServlet {
 		request.setAttribute("list", list);
 		// 위에 두개를 하나로 합친것
 		//request.setAttribute("list", dao.getList());
+		
+		// 페이지 블럭을 생성하기 위한 객체
+		PageDto pageDto = new PageDto(dao.getTotalCnt(), cri);
+		request.setAttribute("pageDto", pageDto);
 		
 		// 자원반납
 		dao.close();

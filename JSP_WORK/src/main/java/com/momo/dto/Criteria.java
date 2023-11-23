@@ -25,7 +25,9 @@ public class Criteria {
 	public Criteria() {
 		// 시작번호와 끝번호를 구한다.
 		// -> 페이지 조회 쿼리에서 사용
+		// endNum = 패이지번호 * 페이지당 게시물 수
 		endNum = this.pageNo * this.amount;
+		// startNum = endNum - (페이지당 게시물 수 -1)
 		startNum = endNum - (this.amount - 1);
 	}
 

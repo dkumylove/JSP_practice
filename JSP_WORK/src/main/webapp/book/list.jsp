@@ -38,6 +38,7 @@
 
 	// 화면 요청
 	// location.href = "/book/view?no=1"; 
+
 </script>
 
 </head>
@@ -52,6 +53,10 @@
 	${list } -->
 	
 	<h2>도서목록 출력</h2>
+	<form action="/book/list" name="searchForm">
+		<input name="pageNo">
+		<input name="amount" value="5">
+	</form>
 	<table class="table">
 		<thead>
 		<tr>
@@ -82,6 +87,9 @@
 		</c:if>
 		</tbody>
 	</table>
+	<!-- page navi -->
+	<!-- pageDto가 request영역에 저장되어 있으면 페이지 블럭을 출력 -->
+	<%@ include file="../06session/servletEx/PageNavi.jsp" %>	
 	
 	<!-- footer 외부파일 인클루드 -->
 	<%@ include file="common/footer.jsp" %>
