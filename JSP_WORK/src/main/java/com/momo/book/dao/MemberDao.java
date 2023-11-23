@@ -11,14 +11,14 @@ public class MemberDao extends DBConnPool{
 	 * 회원가입
 	 * @return
 	 */
-	public int register() {
+	public int register(String id, String pw, String name, String email) {
 		MemberDto memberDto = new MemberDto();
 		
 		int res = 0;
 		
 		String sql = "insert into member (id, pass, name, regidate, email)\r\n"
-				+ "            values ('?', '?', '?', sysdate, '?')";
-		
+				+ "            values (?, ?, ?, sysdate, ?)";
+		System.out.println(sql);
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
