@@ -7,6 +7,19 @@ import com.momo.dto.MemberDto;
 
 public class MemberDao extends DBConnPool{
 
+	public  idCheck(String id) {
+		MemberDto memberDto = new MemberDto();
+		
+		String sql = "select * from member where id = ?";
+		
+		System.out.println(sql);
+		
+		
+		
+		
+	}
+	
+	
 	/**
 	 * 회원가입
 	 * @return

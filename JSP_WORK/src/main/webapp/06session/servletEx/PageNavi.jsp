@@ -56,6 +56,14 @@ startNo : ${pageDto.startNo }<br>
 endNo : ${pageDto.endNo }<br>
 prev : ${pageDto.prev ? "" : "disabled" }<br>
 next : ${pageDto.next ? "" : "disabled" }
+<!-- 페이지 블럭을 출력하는 방법
+	1.요청컨트롤러에서 pageDto를 request영역에 저장
+	2.PageNavi.jsp를 리스트 페이지에 페이지블럭을 출력하고 싶은 위치에 include 해줌(웹에서 사용)
+		*앱에서 사용은 스크린이 올라가서 데이더가 다 불려왔으면 조호해서 붙여주는 이벤트 사용*
+	3.searchForm을 생성, 
+		pageNo 요소가 있어야한다.	
+ -->
+
 	<!-- 페이지네이션 -->
 	<nav aria-label="...">
 	  <ul class="pagination">

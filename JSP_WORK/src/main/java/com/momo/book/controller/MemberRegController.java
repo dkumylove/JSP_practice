@@ -11,10 +11,13 @@ import java.io.IOException;
 
 import com.momo.book.dao.MemberDao;
 
-@WebServlet("/regProcess")
+@WebServlet("/book/regProcess")
 public class MemberRegController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	/**
+	 * 회원가입 진행
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// servlet 에서 세션을 사용하기 위해서 request로 꺼내온다.
