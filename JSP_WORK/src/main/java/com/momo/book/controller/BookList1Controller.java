@@ -22,9 +22,12 @@ public class BookList1Controller extends HttpServlet {
      */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 사용자의 요청 정보를 수집 합니다.
-		Criteria cri = new Criteria(request.getParameter("pageNo"),		// 요청 페이지 번호 (기본값 : 1)
-									request.getParameter("amount"));	// 페이지당 보여줄 게시물의 수 (기본값 : 10)
-							
+		Criteria cri = new Criteria(request.getParameter("pageNo"),			// 요청 페이지 번호 (기본값 : 1)
+									request.getParameter("amount"),			// 페이지당 보여줄 게시물의 수 (기본값 : 10)
+									request.getParameter("searchWord"),
+									request.getParameter("searchField"));
+		
+		System.out.println(cri);
 		
 		// 도서목록 조회후 request 영역에 담아 줍니다. -> 화면에서 출력 하기 위해서!!
 		BookDao dao = new BookDao();
@@ -35,8 +38,9 @@ public class BookList1Controller extends HttpServlet {
 		// 위에 두개를 하나로 합친것
 		//request.setAttribute("list", dao.getList());
 		
-		// 페이지 블럭을 생성하기 위한 객체
-		PageDto pageDto = new PageDto(dao.getTotalCnt(), cri);
+		// 페이지 블럭을 생성하기 위한 객체/ 검색 추가
+		int totalCnt = dao.getTotalCnt(cri);
+		PageDto pageDto = new PageDto(totalCnt, cri);
 		request.setAttribute("pageDto", pageDto);
 		
 		// 자원반납

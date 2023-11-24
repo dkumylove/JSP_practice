@@ -63,6 +63,8 @@
 		function validationCheck(form) {
 			// 유효성검사 결과 testForm울 submit
 			// 체크로직을 모두 통과했다면 서버에 요청, 체크로직을 통과하지 못했다면 메시지 처리
+			
+			// id
 			console.log(form.id.value);
 			if(form.id.value == ''){
 				alert('id를 입력해주세요');
@@ -74,6 +76,8 @@
 				form.id.focus();
 				return false;
 			}
+			
+			// name
 			console.log(form.name.value);
 			if(form.name.value == ''){
 				alert('이름를 입력해주세요');
@@ -82,15 +86,32 @@
 			}
 			if(form.name.value.length > 15){
 				alert('이름의 길이가 15자를 초과 할 수 없어요');
-				form.id.focus();
+				form.name.focus();
 				return false;
 			}
+			
+			// email
 			console.log(form.email.value);
 			if(form.email.value == ''){
 				alert('email를 입력해주세요');
 				form.email.focus();
 				return false;
 			}
+			if(form.email.value.length > 100){
+				alert('email의 길이는 100자를 초과 할 수 없어요');
+				form.email.focus();
+				return false;
+			}
+			// 정규식 패턴 문장열 생성
+			let email_reg = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+			// 패턴과 일치하는 확인
+			if(!email_reg.test(form.email.value)){
+				alert('email형식이 일치하지 않습니다');
+				form.email.focus();
+				return false;
+			}
+			
+			// pw
 			console.log(form.pw.value);
 			if(form.pw.value == ''){
 				alert('패스워드를 입력해주세요');
@@ -98,14 +119,20 @@
 				return false;
 			}
 			console.log(form.pwCheck.value);
-			if(form.pwCheck.value == ''){
-				alert('다시한번 패스워드 입력해주세요');
+			if(form.pwCheck.value != form.pw.value){
+				alert('비밀번호가 일치하지 않습니다. 비밀번호를 확인하세요');
 				form.pwCheck.focus();
+				return false;
+			}
+			if(form.pw.value.length > 10){
+				alert('id의 길이는 10자를 초과 할 수 없어요');
+				form.pw.focus();
 				return false;
 			}
 			return true;
 		}
 		
+		/*
 		function getByteLength(str) {
 			  // TextEncoder 객체 생성 (UTF-8 사용) : 한글 3byte로 계산됨
 			  var encoder = new TextEncoder('utf-8');
@@ -113,7 +140,7 @@
 			  var encoded = encoder.encode(str);
 			  // 바이트 배열의 길이 반환
 			  return encoded.length;
-			} 		
+		}*/ 		
 	</script>
 
 </head>

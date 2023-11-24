@@ -68,7 +68,7 @@ public class MemberRegController extends HttpServlet {
 		if(res > 0) {
 			// 회원가입성공
 			request.setAttribute("msg", "가입축하합니다.");
-			request.setAttribute("url", "/book/login.jsp");
+			request.setAttribute("url", "/book/bookLoginForm.jsp");
 			
 		} else {
 			// 회원가입 실패 - 컬럼의 사이즈보다 입력값이 큰경우, 타입이 맞지 않은경우

@@ -7,37 +7,6 @@ import com.momo.dto.MemberDto;
 
 public class MemberDao extends DBConnPool{
 
-	public int idCheck(String id) {
-		MemberDto memberDto = new MemberDto();
-		
-		int idCheck = 0;
-		
-		String sql = "select * from member where id = ?";
-		
-		System.out.println(sql);
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			// ? 를 값으로 변환, 파라미터 세팅
-			pstmt.setString(1, id);
-			
-			// 쿼리 실행
-			rs = pstmt.executeQuery();
-			
-			if(rs.next() ? true : false) {
-				idCheck = 101;
-			}
-			
-		} catch (SQLException e) {
-			System.out.println("MemberDao.idCheck()===SQLException 예외상황 발생");
-			e.printStackTrace();
-		}
-		return idCheck;
-
-	}
-	
-	
 	/**
 	 * 회원가입
 	 * @return
@@ -118,4 +87,36 @@ public class MemberDao extends DBConnPool{
 		
 		
 	}
+
+	/**
+	public int idCheck(String id) {
+		MemberDto memberDto = new MemberDto();
+		
+		int idCheck = 0;
+		
+		String sql = "select * from member where id = ?";
+		
+		System.out.println(sql);
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			// ? 를 값으로 변환, 파라미터 세팅
+			pstmt.setString(1, id);
+			
+			// 쿼리 실행
+			rs = pstmt.executeQuery();
+			
+			if(rs.next() ? true : false) {
+				idCheck = 101;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("MemberDao.idCheck()===SQLException 예외상황 발생");
+			e.printStackTrace();
+		}
+		return idCheck;
+
+	}*/
+	
 }

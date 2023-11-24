@@ -122,9 +122,10 @@ public class BoardDao extends DBConnPool{
 //		+ "order by num desc";
 		
 		String where = "";
+		
 		// 검색어와 검색 필드에 값이 들어 있다면 조건 문장을 생성
 		if(!"".equals(cri.getSearchField()) && !"".equals(cri.getSearchWord())) {
-			where = "where " + cri.getSearchField() 
+			where = " where " + cri.getSearchField() 
 						+ " like '%" + cri.getSearchWord() + "%'";
 		}
 		

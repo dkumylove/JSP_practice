@@ -66,7 +66,7 @@ public class BookLoginController extends HttpServlet {
 			// 사용자가 존재하지 않으면 이전페이지로 넘어가서 오류 메시지 출력
 			System.out.println("로그인 실패");
 			//response.sendRedirect("loginForm.jsp?isError=1");
-			request.getRequestDispatcher("loginForm.jsp?isError=1").forward(request, response);
+			request.getRequestDispatcher("/book/bookLoginForm.jsp?isError=1").forward(request, response);
 			
 		}
 			

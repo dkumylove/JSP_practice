@@ -21,12 +21,23 @@ public class BookDao extends DBConnPool {
 		
 		List<BookDto> list = new ArrayList<>();
 		
+		String where = "";
+		
+		// 검색어와 검색 필드에 값이 들어 있다면 조건 문장을 생성
+		if(!"".equals(cri.getSearchField()) && !"".equals(cri.getSearchWord())) {
+			where = " where " + cri.getSearchField() 
+						+ " like '%" + cri.getSearchWord() + "%'";
+		}
+		
+		System.out.println("where : " + where);
+		
 		String sql = "select *\r\n"
 					+ "   	  from book\r\n"
+					+ where
 					+ "   	  order by no desc";
 		
 		try {
-			// pageingQuery
+			// pageingQuery(DBConnPool : before + sql + after)
 			sql = pageingQuery(sql);
 			// 쿼리 출력
 			System.out.println("sql\n" + sql);
@@ -97,11 +108,19 @@ public class BookDao extends DBConnPool {
 	 * - 집게 함수를 이용하여 게시글의 총건수를 구한다.
 	 * @return 도서의 총 건수
 	 */
-	public int getTotalCnt() {
+	public int getTotalCnt(Criteria cri) {
 		
 		int res = 0;
+		
+		String where = "";
+		
+		// 검색어와 검색 필드에 값이 들어 있다면 조건 문장을 생성
+		if(!"".equals(cri.getSearchField()) && !"".equals(cri.getSearchWord())) {
+			where = "where " + cri.getSearchField() 
+						+ " like '%" + cri.getSearchWord() + "%'";
+		}
 
-		String sql = "select count(*) from book ";
+		String sql = "select count(*) from book " + where;
 		
 		System.out.println("sql : " + sql);
 		
