@@ -65,14 +65,14 @@ public class MemberRegController extends HttpServlet {
 		dao.close();
 		
 		// 메시지 출력후 페이지 전환
-		if(res == 1) {
+		if(res > 0) {
 			// 회원가입성공
 			request.setAttribute("msg", "가입축하합니다.");
-			request.setAttribute("url", "/book/bookLoginForm.jsp");
+			request.setAttribute("url", "/book/login.jsp");
 			
 		} else {
 			// 회원가입 실패 - 컬럼의 사이즈보다 입력값이 큰경우, 타입이 맞지 않은경우
-			request.setAttribute("msg", "회원가입중  예외상황이 발생했습니다. \n관리자에게 문의해주세요.");
+			request.setAttribute("msg", "회원가입 중  예외상황이 발생했습니다. \n관리자에게 문의해주세요.");
 		}
 		// 메시지 출력화면으로 이동
 		request.getRequestDispatcher("/msgbox.jsp").forward(request, response);

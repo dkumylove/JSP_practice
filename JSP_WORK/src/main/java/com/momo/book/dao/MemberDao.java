@@ -7,8 +7,10 @@ import com.momo.dto.MemberDto;
 
 public class MemberDao extends DBConnPool{
 
-	public void idCheck(String id) {
+	public int idCheck(String id) {
 		MemberDto memberDto = new MemberDto();
+		
+		int idCheck = 0;
 		
 		String sql = "select * from member where id = ?";
 		
@@ -23,13 +25,15 @@ public class MemberDao extends DBConnPool{
 			// 쿼리 실행
 			rs = pstmt.executeQuery();
 			
-			System.out.println(rs.next());
+			if(rs.next() ? true : false) {
+				idCheck = 101;
+			}
 			
 		} catch (SQLException e) {
 			System.out.println("MemberDao.idCheck()===SQLException 예외상황 발생");
 			e.printStackTrace();
 		}
-		
+		return idCheck;
 
 	}
 	
