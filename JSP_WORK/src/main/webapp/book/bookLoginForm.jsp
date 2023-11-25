@@ -118,11 +118,11 @@
                                     <form class="user" name="loginFrm" onsubmit="return validateForm(this);">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                                id="id" type="text" name="user_id" required="required" placeholder="id">
+                                                id="id" type="text" name="user_id" required="required" placeholder="id" value="test">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="pw" type="password" name="user_pw" required="required" placeholder="Password">
+                                                id="pw" type="password" name="user_pw" required="required" placeholder="Password" value="1234">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">

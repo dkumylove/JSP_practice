@@ -89,10 +89,10 @@ public class MemberDao extends DBConnPool{
 	}
 
 	/**
-	public int idCheck(String id) {
+	public boolean idCheck(String id) {
 		MemberDto memberDto = new MemberDto();
 		
-		int idCheck = 0;
+		boolean idCheck = false;
 		
 		String sql = "select * from member where id = ?";
 		
@@ -107,9 +107,7 @@ public class MemberDao extends DBConnPool{
 			// 쿼리 실행
 			rs = pstmt.executeQuery();
 			
-			if(rs.next() ? true : false) {
-				idCheck = 101;
-			}
+			idCheck = rs.next() ? true : false
 			
 		} catch (SQLException e) {
 			System.out.println("MemberDao.idCheck()===SQLException 예외상황 발생");

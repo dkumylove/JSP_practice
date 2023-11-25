@@ -73,7 +73,6 @@
 				options[i].setAttribute("selected", "selected");
 			}
 		}
-		
 	}
 	// 함수는 onload함수 외부에 작성해야 한다.
 	/**

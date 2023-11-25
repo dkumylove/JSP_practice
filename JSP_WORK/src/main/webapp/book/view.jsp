@@ -8,6 +8,13 @@
 </head>
 <body>
 
+	<form action="/boardList" name="searchForm">
+		num : <input type="text" name="num" value="${param.num }"><br>
+		pageNo : <input type="text" name="pageNo" value="${param.pageNo }"><br>
+		searchWord : <input type="text" name="searchWord" value="${param.searchWord }"><br>
+		searchField :<input type="text" name="searchField" value="${param.searchField }"><br>
+	</form>
+
 	<h2>도서정보</h2>
 	요청도서번호 : ${param.no }<br>
 	도서정보 : ${bookDto }<br>

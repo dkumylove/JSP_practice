@@ -6,12 +6,12 @@ import com.momo.common.DBConnection;
 
 /**
  * JDBC를 활용한 테스트 데이터를 생성
- * board 테이블에 테스트 데이터를 생성
+ * book 테이블에 테스트 데이터를 생성
  */
 public class MakeTestDate extends DBConnection{
 	
 	/**
-	 * board 테이블에 데이터를 삽입
+	 * book 테이블에 데이터를 삽입
 	 */
 	public void insert() {
 		
