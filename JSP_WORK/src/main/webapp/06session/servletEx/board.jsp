@@ -152,7 +152,7 @@
 		<option value="id" 
 				${pageDto.cri.searchField eq 'id' ? 'selected' : '' }>작성자</option>
 		<option value="content" 
-				${pageDto.cri.searchField eq 'content' ? 'selected' : '' }>작성자</option>>내용</option>
+				${pageDto.cri.searchField eq 'content' ? 'selected' : '' }>내용</option>
 	  </select>
 	  <input type="text" name="searchWord" value="${pageDto.cri.searchWord }" placeholder="검색어를 입력하세요" class="form-control" aria-label="Text input with dropdown button">
 	  <button class="btn btn-outline-secondary" type="submit">검색</button>

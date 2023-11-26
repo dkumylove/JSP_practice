@@ -94,10 +94,12 @@
 		// 로그인 실패시 출력
 		String isError = request.getParameter("isError");
 		if("1".equals(isError)){
-			out.print("아이디, 비밀번호를 확인해 주세요.");
-		}
 	%>
-	
+			<script type="text/javascript">
+			alert("아이디, 비밀번호를 확인해 주세요.");
+			</script>
+	<% 	}
+	%>
     <div class="container">
 
         <!-- Outer Row -->

@@ -141,5 +141,25 @@ public class BookDao extends DBConnPool {
 		return res;
 	}
 	
+	/**
+	 * 도서목록 삭제하기
+	 */
+	public int deleteBook(String no) {
+		String sql = "delete from book where no = ?";
+		
+		int res = 0;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, no);
+			
+			res = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("BookDao.deleteBook()===SQLException 예외상황 발생");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
 }
 
