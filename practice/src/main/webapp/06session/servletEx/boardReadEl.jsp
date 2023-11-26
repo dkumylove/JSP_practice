@@ -8,7 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	num : ${param.num }<br>
+	<form action="/boardList" name="searchForm">
+		num : <input type="text" name="num" value="${param.num }"><br>
+		pageNo : <input type="text" name="pageNo" value="${param.pageNo }"><br>
+		searchWord : <input type="text" name="searchWord" value="${param.searchWord }"><br>
+		searchField :<input type="text" name="searchField" value="${param.searchField }"><br>
+	</form>
+	
 	<script type="text/javascript">
 		// 화면이 모두 불러 들여져 오면 실행
 		window.onload = function(){
@@ -22,7 +28,8 @@
 				listBtn.onclick = function(){
 					//alert('test');
 					// 리스트 페이지로 이동
-					location.href = '/boardList';
+					//location.href = '/boardList';
+					searchForm.submit();
 				}
 			}
 			

@@ -9,14 +9,10 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  
-  <!-- 컨텍스트 초기화 매개변수 -->
   <context-param>
     <param-name>INIT_PARAM</param-name>
     <param-value>web.xml에 저장한 초기화 변수</param-value>
   </context-param>
-  
-  <!-- 데이터베이스 접속 정보 -->
   <context-param>
     <param-name>driver</param-name>
     <param-value>oracle.jdbc.driver.OracleDriver</param-value>
@@ -33,41 +29,79 @@
     <param-name>pw</param-name>
     <param-value>1234</param-value>
   </context-param>
-  
-  <!-- jndi -->
   <resource-ref>
     <description>Oracle Datasource example</description>
     <res-ref-name>jdbc/myoracle</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
-  
-  <!-- 에러 페이지 -->
   <error-page>
     <error-code>404</error-code>
     <location>/Exception.jsp</location>
   </error-page>
-  
-  <!-- 세션 유지시간을 '분' 으로 설정 -->
   <session-config>
     <session-timeout>20</session-timeout>
   </session-config>
-  
-  <!-- 인코딩 필터 형식  -->
-    <!-- 필터를 정의(클래스위치넣고/ 클래스의 이름정의) -->
   <filter>
     <filter-name>SessionInitializer</filter-name>
     <filter-class>org.apache.catalina.filters.SessionInitializerFilter</filter-class>
-  		<!-- 한글꺠짐 방지를 위한 필터 설정 -->
-  		<init-param>
-  			<param-name>encoding</param-name>
-  			<param-value>UTF-8</param-value>
-  		</init-param>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
   </filter>
-    <!-- 필터 매핑/필터를 언제실행할지 설정(지정URL요청될떄 실행/ 필터이름으로 호출) -->
   <filter-mapping>
-   	<filter-name>SessionInitializer</filter-name>
-   	<url-pattern>/*</url-pattern>
+    <filter-name>SessionInitializer</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <!-- 한글꺠짐 방지를 위한 필터 끝 -->
+  <servlet>
+    <description></description>
+    <display-name>BookListController</display-name>
+    <servlet-name>BookListController</servlet-name>
+    <servlet-class>com.momo.book.controller.BookListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookListController</servlet-name>
+    <url-pattern>/BookListController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookLoginController</display-name>
+    <servlet-name>BookLoginController</servlet-name>
+    <servlet-class>com.momo.book.controller.BookLoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookLoginController</servlet-name>
+    <url-pattern>/BookLoginController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookLogoutController</display-name>
+    <servlet-name>BookLogoutController</servlet-name>
+    <servlet-class>com.momo.book.controller.BookLogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookLogoutController</servlet-name>
+    <url-pattern>/BookLogoutController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookViewController</display-name>
+    <servlet-name>BookViewController</servlet-name>
+    <servlet-class>com.momo.book.controller.BookViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookViewController</servlet-name>
+    <url-pattern>/BookViewController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberRegController</display-name>
+    <servlet-name>MemberRegController</servlet-name>
+    <servlet-class>com.momo.book.controller.MemberRegController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberRegController</servlet-name>
+    <url-pattern>/MemberRegController</url-pattern>
+  </servlet-mapping>
 </web-app>
