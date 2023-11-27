@@ -31,7 +31,7 @@ public class MemberDao extends DBConnPool{
 			res = pstmt.executeUpdate();	
 			
 		} catch (SQLException e) {
-			System.out.println("MemberDao.register()===SQLException 예외상황 발생");
+			System.out.println("MemberDao.regMember()===SQLException 예외상황 발생");
 			e.printStackTrace();
 		}
 		return res;

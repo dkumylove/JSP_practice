@@ -25,6 +25,15 @@ public class BookDto {
 		
 	}
 	
+	
+	
+	public BookDto(String title, String author) {
+		super();
+		this.title = title;
+		this.author = author;
+	}
+
+
 	public BookDto(String no, String title, String author, String rentyn) {
 		this.no = no;
 		this.title = title;
