@@ -17,18 +17,9 @@
 	}
 </style>	
 
+
 <script type="text/javascript">
-	
-	window.onload = function(){
-		
-		console.log('onload event ====');
-		
-		// 요소선텍
-		let regBtn = document.querySelector("#regBtn");
-			regForm.action = "/book/bookReg.jsp";
-			regForm.submit();
-		});
-	}
+
 			
 	// select 요소의 옵션을 선택하는 방법
 	var searchField = '${pageDto.cri.searchField }';
@@ -46,8 +37,6 @@
 			options[i].setAttribute("selected", "selected");
 		}
 	}	
-}
-	
 	
 	/*
 		스크립트에서 함수를 정의 하는 방법
@@ -65,6 +54,11 @@
 	function view(no) {
 		location.href = "/book/view?no=" + no;
 	}
+	
+	function regBook(){
+		location.href = "/book/bookReg.jsp";
+	}
+
 
 // 화면 요청
 // location.href = "/book/view?no=1"; 
@@ -94,26 +88,6 @@
                             href="https://datatables.net">official DataTables documentation</a>.</p>
 
 					<!-- DataTales searchForm -->
-					<form name="searchForm" action="/book/list">
-					<div align="right">
-						pageNo : <input type="text" name="pageNo" value="${pageDto.cri.pageNo }">
-						num : <input type="text" name="num" value="">
-						amount : <input type="text" name="amount" value="">
-					</div>	
-					<div class="input-group">
-					  <select class="form-select" name="searchField" id="inputGroupSelect04" aria-label="Example select with button addon">
-					    
-					    <!-- 선택된 요소의 value 값이 서버로 넘어감 -->
-					    <option value="title" 
-					    		${pageDto.cri.searchField eq 'title' ? 'selected' : '' }>도서명</option>
-						<option value="author" 
-								${pageDto.cri.searchField eq 'author' ? 'selected' : '' }>작가</option>
-					  
-					  </select>
-					  <input type="text" name="searchWord" value="${pageDto.cri.searchWord }" placeholder="검색어를 입력하세요" class="form-control" aria-label="Text input with dropdown button">
-					  <button class="btn btn-outline-secondary" type="submit">검색</button>
-					</div>
-					</form>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -121,6 +95,30 @@
                             <h6 class="m-0 font-weight-bold text-primary">도서목록</h6>
                         </div>
                         <div class="card-body">
+                       		<!-- 검색폼시작 -->
+							<form name="searchForm" action="/book/list">
+							<div align="right">
+								pageNo : <input type="text" name="pageNo" value="${pageDto.cri.pageNo }">
+								num : <input type="text" name="num" value="">
+								amount : <input type="text" name="amount" value="">
+							</div>	
+							<div class="input-group">
+							  <select class="form-select" name="searchField" id="inputGroupSelect04" aria-label="Example select with button addon">
+							    
+							    <!-- 선택된 요소의 value 값이 서버로 넘어감 -->
+							    <option value="title" 
+							    		${pageDto.cri.searchField eq 'title' ? 'selected' : '' }>도서명</option>
+								<option value="author" 
+										${pageDto.cri.searchField eq 'author' ? 'selected' : '' }>작가</option>
+							  
+							  </select>
+							  <input type="text" name="searchWord" value="${pageDto.cri.searchWord }" placeholder="검색어를 입력하세요" class="form-control" aria-label="Text input with dropdown button">
+							  <button class="btn btn-outline-secondary" type="submit">검색</button>
+							</div>
+							</form>
+							<!-- 검색폼 끝 -->
+							<br>
+					 
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
@@ -156,8 +154,8 @@
 								<!-- pageDto가 request영역에 저장되어 있으면 페이지 블럭을 출력 -->
 								<%@ include file="../06session/servletEx/PageNavi.jsp" %>	
                             </div>
-                            <form action="" name="regForm" method="post">
-                            	<p><button type="button" class="btn btn-primary" id="regBtn">도서등록</button></p>  
+                            <form action="/book/bookReg.jsp" name="regForm" method="post">
+                            	<p><button type="button" onclick="regBook()" class="btn btn-primary" id="regBtn">도서등록</button></p>  
                             </form>   
                         </div>
                     </div>

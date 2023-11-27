@@ -9,20 +9,19 @@
 	.w-15{width: 15%; justify-content: center}
 </style>
 
+<script type="text/javascript">
+
+	function regBook(){
+		//location.href = "/book/bookRegProcess";
+		document.regForm.submit();
+	}
+	
+	
+</script>
+
 </head>
 <body>
 
-	<script type="text/javascript">
-		window.onload = function() {
-			// regBtn 요소에 이벤트를 추가합니다.(아이디로 접근하는 방법)
-			regBtn.addEventListener('click', function() {
-				// form요소의 이름으로 접근하여 폼을 전송(새로운페이지 요청)
-				//등록처리를 하고 결과 페이지를 출력
-				regForm.submit();
-			});
-			
-		}
-	</script>
 	
 	<!-- header 외부파일 인클루드 -->
 	<%@ include file="../header.jsp" %>
@@ -41,7 +40,7 @@
 			<div class="card-body">
 			
 			<!-- 등록폼 -->
-				<form action="/book/bookRegProcess" name="regForm" method="post">
+				<form name="regForm" method="post" action="/book/bookRegProcess">
 					<div class="input-group mb-3">
 					
 						<span class="w-15 input-group-text" id="basic-addon1">도서명</span>
@@ -60,7 +59,7 @@
 					<div class="input-group mb-3">
 						<span class="w-15 input-group-text" id="basic-addon1">도서소개</span>
 						<!-- 서버에 값을 넘길 요소 -->
-						<input type="text" class="form-control"   name="content"
+						<input type="text" class="form-control"   -name="content"
 								aria-label="Username" aria-describedby="basic-addon1">
 					</div>
 			
@@ -70,7 +69,7 @@
 						<input type="file" class="form-control" id="inputGroupFile01" name="imgFile">
 						<%-- <label class="input-group-text" for="inputGroupFile01">Upload</label>--%>
 					</div>							
-					<p><button type="button" class="btn btn-primary" id="regBtn">도서등록</button></p>
+					<p><button type="button" class="btn btn-primary" id="regBtn" onclick="regBook()">도서등록</button></p>
 				</form>
 			</div>
 		</div>

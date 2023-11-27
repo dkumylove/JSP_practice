@@ -20,6 +20,10 @@ public class BookRegController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("get방식 요청입니다. 확인후 다시 요청하세요").append(request.getContextPath());
+		
+		// 한글꺠짐 처리
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 	}
 
 
