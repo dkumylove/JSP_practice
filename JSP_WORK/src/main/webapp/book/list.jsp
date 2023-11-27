@@ -97,11 +97,11 @@
                         <div class="card-body">
                        		<!-- 검색폼시작 -->
 							<form name="searchForm" action="/book/list">
-							<div align="right">
+							<%--<div align="right">
 								pageNo : <input type="text" name="pageNo" value="${pageDto.cri.pageNo }">
 								num : <input type="text" name="num" value="">
 								amount : <input type="text" name="amount" value="">
-							</div>	
+							</div> --%>	
 							<div class="input-group">
 							  <select class="form-select" name="searchField" id="inputGroupSelect04" aria-label="Example select with button addon">
 							    

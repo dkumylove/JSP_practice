@@ -80,7 +80,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">이대 도서관</div>
+                <div class="sidebar-brand-text mx-3">☆☆도서관</div>
             </a>
 
             <!-- Divider -->
