@@ -19,7 +19,16 @@
 
 <script type="text/javascript">
 	
-
+	window.onload = function(){
+		
+		console.log('onload event ====');
+		
+		// 요소선텍
+		let regBtn = document.querySelector("#regBtn");
+			regForm.action = "/book/bookReg.jsp";
+			regForm.submit();
+		});
+	}
 			
 	// select 요소의 옵션을 선택하는 방법
 	var searchField = '${pageDto.cri.searchField }';

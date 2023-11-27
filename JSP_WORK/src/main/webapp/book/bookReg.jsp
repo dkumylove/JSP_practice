@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.w-15{width: 15%; justify-content: center}
+</style>
+
 </head>
 <body>
 
@@ -39,33 +43,33 @@
 			<!-- 등록폼 -->
 				<form action="/book/bookRegProcess" name="regForm" method="post">
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="basic-addon1">도서명</span>
+					
+						<span class="w-15 input-group-text" id="basic-addon1">도서명</span>
 						<!-- 서버에 값을 넘길 요소 -->
 						<input type="text" class="form-control"   name="title"
 								aria-label="Username" aria-describedby="basic-addon1">
 					</div>
 
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="basic-addon1">작가명</span>
+						<span class="w-15 input-group-text" id="basic-addon1">작가명</span>
 						<!-- 서버에 값을 넘길 요소 -->
 						<input type="text" class="form-control"   name="author"
 								aria-label="Username" aria-describedby="basic-addon1">
 					</div>
 					
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="basic-addon1">도서소개</span>
+						<span class="w-15 input-group-text" id="basic-addon1">도서소개</span>
 						<!-- 서버에 값을 넘길 요소 -->
-						<input type="text" class="form-control"   name="author"
+						<input type="text" class="form-control"   name="content"
 								aria-label="Username" aria-describedby="basic-addon1">
 					</div>
 			
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="basic-addon1">표지이미지</span>
+						<span class="w-15 input-group-text" id="basic-addon1">표지이미지</span>
 						<!-- 서버에 값을 넘길 요소 -->
 						<input type="file" class="form-control" id="inputGroupFile01" name="imgFile">
 						<%-- <label class="input-group-text" for="inputGroupFile01">Upload</label>--%>
-					</div>					
-									
+					</div>							
 					<p><button type="button" class="btn btn-primary" id="regBtn">도서등록</button></p>
 				</form>
 			</div>

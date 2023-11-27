@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.momo.common.DBConnPool;
 import com.momo.dto.Criteria;
-import com.momo.dto.MemberDto;
 import com.momo.lib.dto.BookDto;
 
 /**
@@ -166,29 +165,25 @@ public class BookDao extends DBConnPool {
 	 * 도서목록 등록
 	 * @return
 	 */
-	public int regBook(String title, String author) {
-		MemberDto memberDto = new MemberDto();
+	public int regBook(BookDto dto) {
 		
 		int res = 0;
 		
 		// 쿼리문 만들기
-		String sql = "insert into book\r\n"
-				+ "values (SEQ_BOOK_NUM.nextval, ?, \r\n"
-				+ "        'N', ?)";
+		String sql = "insert into book (no, title, rentyn, author)\r\n"
+				+ "values (SEQ_BOOK_NUM.nextval, ?, 'N', ?)";
 		
 		System.out.println(sql);
-		
+
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, title);
-			pstmt.setString(2, author);
-			
-			
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getAuthor());
+						
 			// 입력 실행
 			res = pstmt.executeUpdate();
 			
-			System.out.println(res + "건 입력되었습니다.");
-				
+			System.out.println(res + "건 입력되었습니다.");	
 			
 		} catch (SQLException e) {
 			System.out.println("BookDao.regBook()===SQLException 예외상황 발생");
