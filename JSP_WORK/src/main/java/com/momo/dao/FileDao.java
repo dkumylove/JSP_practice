@@ -30,6 +30,12 @@ public class FileDao extends DBConnPool{
 	 */
 	public int regFile(FileDto fileDto) {
 		
+		System.out.println(fileDto.getFile_no());
+		System.out.println(fileDto.getName());
+		System.out.println(fileDto.getCate());
+		System.out.println(fileDto.getOfile());
+		System.out.println(fileDto.getSfile());
+		
 		String sql = "insert into tbl_file (  file_no, name, title, cate, ofile, sfile)\r\n"
 					+ "	values ( seq_tbl_file.nextval, ?, ?, ?, ?, ?)";
 		int res = 0;
@@ -43,6 +49,10 @@ public class FileDao extends DBConnPool{
 			pstmt.setString(5, fileDto.getSfile());
 			
 			res = pstmt.executeUpdate();
+			
+			System.out.println(res + "건의 파일이 등록되었습니다.");
+			
+			return res;
 			
 		} catch (SQLException e) {
 			System.out.println("FileDao.regFile()===SQLException 예외상황 발생");
@@ -91,7 +101,7 @@ public class FileDao extends DBConnPool{
 		//Part 객체의 헤더값 중 content-disposition 읽어오기 
         String partHeader = part.getHeader("content-disposition");
         //출력결과 => form-data; name="attachedFile"; filename="파일명.jpg"
-        System.out.println("partHeader : "+ partHeader);
+        System.out.println("uploadFile()_partHeader : "+ partHeader);
          
         //헤더값에서 파일명 잘라내기
         String[] phArr = partHeader.split("filename=");
@@ -107,14 +117,23 @@ public class FileDao extends DBConnPool{
 	}
 	
 	
+	/* 파일이 첨부된경우 파일명이 중복되어 파일이 유실되는 경우를 방지하기 위해 파일명을 변경 합니다.
+	 * 	- 중복된 파일을 업로드 하는 경우 기존에 저장된 파일이 소실될 우려가 있으므로 파일명을 변경하여 저장 합니다.
+	 * 	- 파일을 저장 할때는 /년/월/일 폴더를 생성후 파일명에 날자를 붙여서 저장 
+	 * 	- 파일을 저장 할때 파일명_날자시간.확장자
+	 * 	- 파일을 저장 할때 날자시간_파일명.확장자
+	 */
 	//파일명 변경
 	public static String renameFile(String sDirectory, String fileName) {
 		//원본파일의 확장자 잘라내기
 		String ext = fileName.substring(fileName.lastIndexOf("."));
 		//날짜 및 시간을 통해 파일명 생성
 		String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
-		//"날짜_시간.확장자" 형태의 새로운 파일명 생성
-		String newFileName = now + ext;  
+		//"원본파일명_날짜_시간.확장자" 형태의 새로운 파일명 생성
+		//원본파일명
+		String oFileName = fileName.substring(0, fileName.lastIndexOf("."));
+		String newFileName = oFileName+ "_" + now + ext;  
+		System.out.println("renameFile()_newFileName : " + newFileName);
 
 		//기존 파일명을 새로운 파일명으로 변경
 		File oldFile = new File(sDirectory + File.separator + fileName);

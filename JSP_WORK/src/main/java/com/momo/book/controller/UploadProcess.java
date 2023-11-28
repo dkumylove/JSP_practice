@@ -62,45 +62,41 @@ public class UploadProcess extends HttpServlet {
 		//파일 업로드 하기
 		// name속성을 이용해 파일을 확인
 		String fileName = fileDao.uploadFile(request, sDirectory);
-		System.out.println("파일명 : " + fileName);
+		System.out.println("파일명 fileName: " + fileName);
 		
 		//저장된 파일명 변경하기
         String sFileName = fileDao.renameFile(sDirectory, fileName);
-		System.out.println("파일명 : " + sFileName);        
+		System.out.println("파일명 sFileName : " + sFileName);  
+		System.out.println("===== DB저장시작전");
         
         //DB에 저장하기
-        insertFile(request, fileName, sFileName);
-        System.out.println("====================");
-        System.out.println(fileName);
-        System.out.println(sFileName);
-        
-        
-        	 		
- 		/* 파일이 첨부된경우 파일명이 중복되어 파일이 유실되는 경우를 방지하기 위해 파일명을 변경 합니다.
- 		 * 	- 중복된 파일을 업로드 하는 경우 기존에 저장된 파일이 소실될 우려가 있으므로 파일명을 변경하여 저장 합니다.
- 		 * 	- 파일을 저장 할때는 /년/월/일 폴더를 생성후 파일명에 날자를 붙여서 저장 
- 		 * 	- 파일을 저장 할때 파일명_날자시간.확장자
- 		 * 	- 파일을 저장 할때 날자시간_파일명.확장자
- 		 */
+        int res = insertFile(request, fileName, sFileName);
+        System.out.println(res);
+        System.out.println("=======insertFile()까지");
+ 		// 입력된 내용을 DB에 저장 합니다.
+ 		//int res = fileDao.regFile(fileDto);  
+          
         
         // 페이지 전환
- 		// 입력된 내용을 DB에 저장 합니다.
- 		int res = fileDao.regFile(fileDto);
-	 		
+
  		if(res > 0) {
  			request.setAttribute("msg", "등록되었습니다.");
  			// list.jsp를 바로 호출할경우 데이터를 조회 할 수 없으므로
  			// 서블릿을 호출합니다
- 			request.setAttribute("url", "/upload/list");
+ 			request.setAttribute("url", "/10upload/list.jsp");
  		} else {			
  			request.setAttribute("msg", "등록중 예외사항이 발생 하였습니다. 관리자에게 문의해주세요.");
  		}
  		
- 		request.getRequestDispatcher("/book/msgBox.jsp").forward(request, response);
+ 		request.getRequestDispatcher("/msgbox.jsp").forward(request, response);
 	}
+
 	
-	private void insertFile(HttpServletRequest request, String fileName, String sFileName) {
+	
+	
+	private int insertFile(HttpServletRequest request, String fileName, String sFileName) {
 		//파일 외 폼값 받기
+		String name = request.getParameter("name");
 	    String title = request.getParameter("title");
 	    String[] cateArray = request.getParameterValues("cate");
 	    StringBuffer cateBuf = new StringBuffer();
@@ -112,20 +108,29 @@ public class UploadProcess extends HttpServlet {
 	            cateBuf.append(s + ", ");
 	        }
 	    }
-	    System.out.println("파일외폼값:"+title +"\n"+ cateBuf);
+	    System.out.println("insertFile()_파일외폼값 : " + name + "/ " + title + "/ "+ cateBuf + "/ "+ fileName + "/ "+ sFileName);
 	    
 		//Dto에 담기
-        FileDto dto = new FileDto();
-        dto.setTitle(title);
-        dto.setCate(cateBuf.toString());
-        dto.setOfile(fileName);
-        dto.setSfile(sFileName);
+        FileDto fileDto = new FileDto();
+        fileDto.setName(name);
+        fileDto.setTitle(title);
+        fileDto.setCate(cateBuf.toString());
+        fileDto.setOfile(fileName);
+        fileDto.setSfile(sFileName);
         
-        System.out.println(dto);
+        System.out.println(fileDto);
 
         //Dao를 통해 데이터베이스에 반영
         FileDao dao = new FileDao();
-        dao.regFile(dto);
+        int res = dao.regFile(fileDto);
+        
+        System.out.println(res);
+       
+        // 자원반납
         dao.close();
+        
+        return res;
+        
+       
 	}
 }

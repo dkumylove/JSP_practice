@@ -1,3 +1,8 @@
+<%@page import="java.io.FileNotFoundException"%>
+<%@page import="java.io.OutputStream"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -71,13 +76,13 @@
 	}
 	catch (FileNotFoundException e) {
 		request.setAttribute("msg", "파일을 찾을수 없습니다.");
-	    request.getRequestDispatcher("/book/msgBox.jsp").forward(request, response);
+	    request.getRequestDispatcher("/msgbox.jsp").forward(request, response);
 	    
 	}
 	catch (Exception e){
 		e.printStackTrace();
 		request.setAttribute("msg", "파일 다운로드중 오류가 발생 하였습니다.");
-	    request.getRequestDispatcher("/book/msgBox.jsp").forward(request, response);
+	    request.getRequestDispatcher("/msgbox.jsp").forward(request, response);
 	}
     
 %>

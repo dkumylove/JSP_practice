@@ -3,11 +3,11 @@ package com.momo.dto;
 public class FileDto {
 	private int file_no;
 	private String name;
-	private String title;
-	private String cate;
-	private String ofile;
-	private String sfile;
-	private String postdate;
+	private String title;		//제목
+	private String cate;		//카테고리
+	private String ofile;		//원본파일명
+	private String sfile;		//저장된파일명
+	private String postdate;	//등록날짜
 	
 	@Override
 	public String toString() {
