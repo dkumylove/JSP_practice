@@ -73,6 +73,8 @@ public class UploadProcess extends HttpServlet {
         System.out.println("====================");
         System.out.println(fileName);
         System.out.println(sFileName);
+        
+        
         	 		
  		/* 파일이 첨부된경우 파일명이 중복되어 파일이 유실되는 경우를 방지하기 위해 파일명을 변경 합니다.
  		 * 	- 중복된 파일을 업로드 하는 경우 기존에 저장된 파일이 소실될 우려가 있으므로 파일명을 변경하여 저장 합니다.
