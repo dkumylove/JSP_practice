@@ -6,35 +6,21 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
-
-import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
 
 import com.momo.dao.FileDao;
 import com.momo.dto.FileDto;
-import com.oreilly.servlet.MultipartRequest;
 
-import fileupload.FileUtil;
-import fileupload.MyFileDAO;
-import fileupload.MyFileDTO;
-
-
-
-@WebServlet("/upload/uploadProcess")
+@WebServlet("/book/bookRegUplosdProcess")
 @MultipartConfig(maxFileSize = 1024*1024*1, maxRequestSize = 1024*1024*10)
-public class UploadProcess extends HttpServlet {
+public class BookRegUplosdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("method : get ").append(request.getContextPath());
-		
+				
 		// 한글꺠짐 처리
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");

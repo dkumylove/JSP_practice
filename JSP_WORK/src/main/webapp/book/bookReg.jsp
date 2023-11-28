@@ -40,7 +40,9 @@
 			<div class="card-body">
 			
 			<!-- 등록폼 -->
-				<form name="regForm" method="post" action="/book/bookRegProcess">
+				<%--<form name="regForm" method="post" action="/book/bookRegProcess"> --%>
+				<form name="regForm" method="post" action="/book/bookRegUplosdProcess"
+						enctype="multipart/form-data">
 					<div class="input-group mb-3">
 					
 						<span class="w-15 input-group-text" id="basic-addon1">도서명</span>
